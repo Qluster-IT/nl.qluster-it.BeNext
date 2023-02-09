@@ -5,14 +5,14 @@
 //still experimental
 
 const Homey = require('homey');
-const ZwaveDevice = require('homey-meshdriver').ZwaveDevice;
+const ZwaveDevice = require('homey-zwavedriver').ZwaveDevice;
 
 const DEFAULT_SETPOINT = 20;
 
 class HeatingDevice extends ZwaveDevice {
 
 
-onMeshInit() {
+OnNodeInit(){
 	    this.enableDebug();
 		this.printNode();
 		this.registerCapability('target_temperature', 'CLIMATE_CONTROL_SCHEDULE', {

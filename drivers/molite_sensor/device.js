@@ -1,14 +1,14 @@
 'use strict';
 
 const Homey = require('homey');
-const ZwaveDevice = require('homey-meshdriver').ZwaveDevice;
+const ZwaveDevice = require('homey-zwavedriver').ZwaveDevice;
 
 // Documentation NL: http://www.benext.eu/static/manual/molitesensor-nl.pdf
 // English: http://www.benext.eu/static/manual/molitesensor.pdf
 
 class MoliteSensorDevice extends ZwaveDevice {
 
-onMeshInit() {
+OnNodeInit(){
 		this.enableDebug();
 		this.printNode();
 this.registerCapability('alarm_motion', 'SENSOR_BINARY');

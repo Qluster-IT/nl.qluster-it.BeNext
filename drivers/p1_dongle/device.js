@@ -3,11 +3,11 @@
 // Documentation: http://www.benext.eu/static/manual/P1_dongle-nl.pdf
 
 const Homey = require('homey');
-const ZwaveDevice = require('homey-meshdriver').ZwaveDevice;
+const ZwaveDevice = require('homey-zwavedriver').ZwaveDevice;
 
 class P1DongleDevice extends ZwaveDevice {
 
-onMeshInit() {
+OnNodeInit(){
 		this.enableDebug();
 		this.printNode();
 

@@ -587,7 +587,7 @@ button.zipato { margin-right: 10px; }
 				if (err === true || result === true) {
 					document.getElementById('systemEventLogBody').innerHTML = '<tr data-type="emptyMessage"><td colspan="5">Clearing eventlog...</td></tr>';
 
-					Homey.set('systemEventLog', new Array(), function(err) {
+					Homey.set('systemEventLog', [], function(err) {
 						if (err) {
 							showMessage('Error clearing event log', err, 'danger');	
 						} else {
@@ -606,7 +606,7 @@ button.zipato { margin-right: 10px; }
 		{
 			Homey.confirm(__('settings.advanced.messages.confirmClearTags'), 'warning', function(err, result) {
 				if (err === true || result === true) {
-					Homey.set('tagContainer', new Array());
+					Homey.set('tagContainer', []);
 					showMessage('', __('settings.advanced.messages.tagsClearedConfirmation'), 'success');
 				}
 			});
