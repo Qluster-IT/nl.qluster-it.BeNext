@@ -8,7 +8,7 @@ const ZwaveDevice = require('homey-zwavedriver').ZwaveDevice;
 class EnergySwitchDevice extends ZwaveDevice {
 
 
-OnNodeInit(){
+onNodeInit(){
 	    this.enableDebug();
 		this.printNode();
 		

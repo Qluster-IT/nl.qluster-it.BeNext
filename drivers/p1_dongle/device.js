@@ -7,7 +7,7 @@ const ZwaveDevice = require('homey-zwavedriver').ZwaveDevice;
 
 class P1DongleDevice extends ZwaveDevice {
 
-OnNodeInit(){
+onNodeInit(){
 		this.enableDebug();
 		this.printNode();
 

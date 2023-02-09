@@ -1,12 +1,10 @@
-# BeNext 
-
 This app adds support for BeNext devices in Homey.
 It is a rewrite to SDKv3
 Not all features are implemented at the moment.
 Please report any problems and suggestions.
 
 
-## Currently supported devices:
+Currently supported devices:
 
 * Alarm sound
 * P1 dongle
@@ -17,5 +15,3 @@ Please report any problems and suggestions.
 * Window/door sensor
 * Heating control
 * Energy switch plus
-
-

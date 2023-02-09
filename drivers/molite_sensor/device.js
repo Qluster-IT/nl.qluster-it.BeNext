@@ -8,7 +8,7 @@ const ZwaveDevice = require('homey-zwavedriver').ZwaveDevice;
 
 class MoliteSensorDevice extends ZwaveDevice {
 
-OnNodeInit(){
+onNodeInit(){
 		this.enableDebug();
 		this.printNode();
 this.registerCapability('alarm_motion', 'SENSOR_BINARY');

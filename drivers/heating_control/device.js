@@ -12,7 +12,7 @@ const DEFAULT_SETPOINT = 20;
 class HeatingDevice extends ZwaveDevice {
 
 
-OnNodeInit(){
+onNodeInit(){
 	    this.enableDebug();
 		this.printNode();
 		this.registerCapability('target_temperature', 'CLIMATE_CONTROL_SCHEDULE', {

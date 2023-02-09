@@ -7,7 +7,7 @@ const ZwaveDevice = require('homey-zwavedriver').ZwaveDevice;
 
 class DimmerDevice extends ZwaveDevice {
 
-OnNodeInit(){
+onNodeInit(){
 			this.enableDebug();
 		this.printNode();
 this.registerCapability('onoff', 'SWITCH_MULTILEVEL');

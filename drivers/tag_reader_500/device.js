@@ -19,7 +19,7 @@ const clamp = function (num, min, max) {
 };
 
 class tagReaderDevice extends ZwaveDevice {
-	async OnNodeInit(){
+	async onNodeInit(){
 		this.enableDebug();
 		this.printNode();
 		this.log("Initializing mesh driver");
