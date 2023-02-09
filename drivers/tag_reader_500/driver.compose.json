@@ -1,0 +1,48 @@
+{
+    "id": "tag_reader_500",
+    "name": {
+        "en": "Tag Reader (500)",
+        "nl": "Tag Reader (500)"
+    },
+    "zwave": {
+        "manufacturerId": 138,
+        "productTypeId": 7,
+        "productId": [ 
+                      512,
+                      256,
+                      257
+                      ],
+        "learnmode": {
+            "image": "/drivers/tag_reader_500/assets/learnmode.svg",
+            "instruction": {
+                "en": "For Tag Reader: Press and hold the tamper switch about a second until indication LED blinks once per second, then release. For Tag Reader 500 (Z-Wave Plus): Press and hold the enter button for two seconds (indication LED blinks shortly). Release the enter button.",
+                "nl": "For Tag Reader: Press and hold the tamper switch about a second until indication LED blinks once per second, then release. For Tag Reader 500 (Z-Wave Plus): Press and hold the enter button for two seconds (indication LED blinks shortly). Release the enter button."
+            }
+        },
+        "associationGroups": [
+            1
+        ],
+        "associationGroupsOptions": {},
+        "wakeUpInterval": 900,
+        "defaultConfiguration": [{
+            "id": 7,
+            "size": 1,
+            "value": 1
+        }]
+    },
+    "class": "homealarm",
+    "capabilities": [
+        "measure_battery",
+        "alarm_tamper",
+        "user_code_report",
+        "homealarm_state",
+        "my_gateway_control"
+    ],
+      "energy": {
+      "batteries": [ "AA", "AA" ]
+      },
+    "images": {
+        "large": "/drivers/tag_reader_500/assets/images/large.png",
+        "small": "/drivers/tag_reader_500/assets/images/small.png"
+    }
+}
