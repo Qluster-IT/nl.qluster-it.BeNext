@@ -61,15 +61,15 @@ onNodeInit(){
 					Properties1: {
 						'Override Type': this.getSetting('override_mode') || 1,
 					},
-					'Override State': new Buffer([delta])
+					'Override State': Buffer.from([delta])//new Buffer([delta])
 				});
 
 				return {
 					Properties1: {
 						'Override Type': this.getSetting('override_mode') || 1,
 					},
-					'Override State': new Buffer([delta])
-				}
+					'Override State': Buffer.from([delta])
+				};
 			}
 		});
 
@@ -86,6 +86,8 @@ onNodeInit(){
 			}),
 			command_report: 'SENSOR_MULTILEVEL_REPORT',
 			command_report_parser: report => {
+				console.log('QIT_TEST1');
+				console.log(report['Sensor Type'] !== 'Barometric pressure (version 2) ');
 				if (report['Sensor Type'] !== 'Barometric pressure (version 2) ' || report['Sensor Value (Parsed)'] === -999.9) return null;
 				return report['Sensor Value (Parsed)'];
 			},
@@ -105,6 +107,8 @@ onNodeInit(){
 			}),
 			command_report: 'SENSOR_MULTILEVEL_REPORT',
 			command_report_parser: report => {
+				console.log('QIT_TEST2');
+				console.log(report['Sensor Type'] !== 'Target Temperature (v6)');
 				if (report['Sensor Type'] !== 'Target Temperature (v6)' || report['Sensor Value (Parsed)'] === -999.9) return null;
 				return report['Sensor Value (Parsed)'];
 			},
@@ -113,7 +117,7 @@ onNodeInit(){
 
 
 		//Setpoint
-				if (this.node && this.node.CommandClass && this.node.CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT) {
+		if (this.node && this.node.CommandClass && this.node.CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT) {
 			this.node.CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT.THERMOSTAT_SETPOINT_GET({
 				'Level': {
 					'Setpoint Type': 'Heating 1'

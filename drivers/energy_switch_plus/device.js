@@ -6,19 +6,16 @@ const Homey = require('homey');
 const ZwaveDevice = require('homey-zwavedriver').ZwaveDevice;
 
 class EnergySwitchDevice extends ZwaveDevice {
-
-
-onNodeInit(){
+	onNodeInit(){
 	    this.enableDebug();
-		this.printNode();
-		
-		
-this.registerCapability('onoff', 'SWITCH_BINARY');
-this.registerCapability('onoff', 'BASIC_SET');
-this.registerCapability('measure_power', 'METER');
-this.registerCapability('meter_power', 'METER');
-
-}
+		this.printNode();		
+				
+		this.registerCapability('onoff', 'SWITCH_BINARY');
+		this.registerCapability('onoff', 'BASIC_SET');
+		this.registerCapability('measure_power', 'METER');
+		this.registerCapability('meter_power', 'METER');
+	}
+	
 }
 
 module.exports = EnergySwitchDevice;
