@@ -10,5 +10,14 @@
   },
   "1.3.3": {
     "en": "TESTVERSION: Finding an SDK3 bug for Heating_Control!"
+  },
+  "1.3.4": {
+    "en": "Fixed: P1 dongle fixed."
+  },
+  "1.3.5": {
+    "en": "Fixed: P1 dongle fixed."
+  },
+  "1.3.6": {
+    "en": "Fixed: P1 dongle fixed."
   }
 }

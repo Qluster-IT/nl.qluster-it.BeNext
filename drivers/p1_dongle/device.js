@@ -7,9 +7,22 @@ const ZwaveDevice = require('homey-zwavedriver').ZwaveDevice;
 
 class P1DongleDevice extends ZwaveDevice {
 
-onNodeInit(){
+async onNodeInit(){
 		this.enableDebug();
 		this.printNode();
+
+		if(this.hasCapability('meter_power.normal')) await this.removeCapability('meter_power.normal');
+		if(this.hasCapability('meter_power.low')) await this.removeCapability('meter_power.low');
+		
+		if(!this.hasCapability('meter_power.kwh.normal')) await this.addCapability('meter_power.kwh.normal');
+		if(!this.hasCapability('meter_power.w_current.normal')) await this.addCapability('meter_power.w_current.normal');
+		if(!this.hasCapability('meter_power.kwh.produced.normal')) await this.addCapability('meter_power.kwh.produced.normal');
+		if(!this.hasCapability('meter_power.w_current.produced.normal')) await this.addCapability('meter_power.w_current.produced.normal');
+		if(!this.hasCapability('meter_power.kwh.low')) await this.addCapability('meter_power.kwh.low');
+		if(!this.hasCapability('meter_power.w_current.low')) await this.addCapability('meter_power.w_current.low');
+		if(!this.hasCapability('meter_power.kwh.produced.low')) await this.addCapability('meter_power.kwh.produced.low');
+		if(!this.hasCapability('meter_power.w_current.produced.low')) await this.addCapability('meter_power.w_current.produced.low');
+
 
 this.registerCapability('measure_power', 'METER');
 this.registerCapability('meter_power.kwh.normal', 'METER', {
@@ -33,7 +46,7 @@ this.registerCapability('meter_power.kwh.normal', 'METER', {
 				return null;
 }
 });
-this.registerCapability('meter_power.current_w.normal', 'METER', {
+this.registerCapability('meter_power.w_current.normal', 'METER', {
 			multiChannelNodeId: 1,
 			pollInterval: 'poll_interval_channel_1',
 			get: 'METER_GET',
@@ -75,7 +88,7 @@ this.registerCapability('meter_power.kwh.produced.normal', 'METER', {
 				return null;
 }
 });
-this.registerCapability('meter_power.current_w.produced.normal', 'METER', {
+this.registerCapability('meter_power.w_current.produced.normal', 'METER', {
 			multiChannelNodeId: 1,
 			pollInterval: 'poll_interval_channel_1',
 			get: 'METER_GET',
