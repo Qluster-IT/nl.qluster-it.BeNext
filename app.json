@@ -6,7 +6,7 @@
   },
   "brandColor": "#a6ce3f",
   "sdk": 3,
-  "version": "1.3.6",
+  "version": "1.3.7",
   "compatibility": ">=5.0.0",
   "description": {
     "en": "BeNext devices for Homey",
@@ -605,67 +605,25 @@
       "class": "sensor",
       "capabilities": [
         "measure_power",
-        "meter_power.kwh.normal",
-        "meter_power.w_current.normal",
-        "meter_power.kwh.produced.normal",
-        "meter_power.w_current.produced.normal",
-        "meter_power.kwh.low",
-        "meter_power.w_current.low",
-        "meter_power.kwh.produced.low",
-        "meter_power.w_current.produced.low",
+        "meter_power.normal",
+        "meter_power.low",
         "meter_gas"
       ],
       "energy": {
         "cumulative": true
       },
       "capabilitiesOptions": {
-        "meter_power.kwh.normal": {
+        "meter_power.normal": {
           "title": {
-            "en": "Power Meter Used Normal",
-            "nl": "Stroommeter Verbruik Normaal"
+            "en": "Power Meter Normal",
+            "nl": "Stroommeter Normaal"
           }
         },
-        "meter_power.w_current.normal": {
+        "meter_power.low": {
           "title": {
-            "en": "Power Meter Used Current Normal",
-            "nl": "Stroommeter Huidige Verbruik Normaal"
+            "en": "Power Meter Low",
+            "nl": "Stroommeter Laag"
           }
-        },
-        "meter_power.kwh.produced.normal": {
-          "title": {
-            "en": "Power Meter Produced Normal",
-            "nl": "Stroommeter Geleverd Normaal"
-          }
-        },
-        "meter_power.w_current.produced.normal": {
-          "title": {
-            "en": "Power Meter Realtime Production Normal",
-            "nl": "Stroommeter Huidige Opgewekt Normaal"
-          }
-        },
-        "meter_power.kwh.low": {
-          "title": {
-            "en": "Power Meter Used Low",
-            "nl": "Stroommeter Gebruikt Laag"
-          }
-        }
-      },
-      "meter_power.w_current.low": {
-        "title": {
-          "en": "Power Meter Current Used Low",
-          "nl": "Stroommeter Huidige Gebruik Laag"
-        }
-      },
-      "meter_power.kwh.produced.low": {
-        "title": {
-          "en": "Power Meter Produced Low",
-          "nl": "Stroommeter Geleverd Laag"
-        }
-      },
-      "meter_power.w_current.produced.low": {
-        "title": {
-          "en": "Power Meter Current Production Low",
-          "nl": "Stroommeter Huidige Geleverd Laag"
         }
       },
       "images": {

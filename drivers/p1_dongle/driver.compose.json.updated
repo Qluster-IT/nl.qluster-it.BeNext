@@ -1,0 +1,92 @@
+{
+      "id": "p1_dongle",
+      "name": {
+        "en": "P1 Dongle",
+        "nl": "P1 Dongle"
+      },
+      "zwave": {
+        "manufacturerId": 138,
+        "productTypeId": 47,
+        "productId": 256,
+        "learnmode": {
+          "image": "/drivers/p1_dongle/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press and hold the button on your P1 Dongle for three seconds, release to include the device.",
+            "nl": "Houd de knop op de P1 Dongle drie seconden vast, laat los om het apparaat toe te voegen."
+          }
+        },
+        "associationGroups": [
+          1
+        ]
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_power",
+        "meter_power.kwh.normal",
+        "meter_power.w_current.normal",
+        "meter_power.kwh.produced.normal",
+        "meter_power.w_current.produced.normal",
+        "meter_power.kwh.low",
+        "meter_power.w_current.low",
+        "meter_power.kwh.produced.low",
+        "meter_power.w_current.produced.low",
+        "meter_gas"
+      ],
+      "energy": {
+      "cumulative": true
+      },
+      "capabilitiesOptions": {
+        "meter_power.kwh.normal": {
+          "title": {
+            "en": "Power Meter Used Normal",
+            "nl": "Stroommeter Verbruik Normaal"
+          }
+        },
+        "meter_power.w_current.normal": {
+          "title": {
+            "en": "Power Meter Used Current Normal",
+            "nl": "Stroommeter Huidige Verbruik Normaal"
+          }
+        },
+        "meter_power.kwh.produced.normal": {
+          "title": {
+            "en": "Power Meter Produced Normal",
+            "nl": "Stroommeter Geleverd Normaal"
+          }
+        },
+        "meter_power.w_current.produced.normal": {
+          "title": {
+            "en": "Power Meter Realtime Production Normal",
+            "nl": "Stroommeter Huidige Opgewekt Normaal"
+          }
+        },
+        "meter_power.kwh.low": {
+          "title": {
+            "en": "Power Meter Used Low",
+            "nl": "Stroommeter Gebruikt Laag"
+          }
+        }
+      },
+        "meter_power.w_current.low": {
+          "title": {
+            "en": "Power Meter Current Used Low",
+            "nl": "Stroommeter Huidige Gebruik Laag"
+          }
+        },
+        "meter_power.kwh.produced.low": {
+          "title": {
+            "en": "Power Meter Produced Low",
+            "nl": "Stroommeter Geleverd Laag"
+          }
+        },
+        "meter_power.w_current.produced.low": {
+          "title": {
+            "en": "Power Meter Current Production Low",
+            "nl": "Stroommeter Huidige Geleverd Laag"
+          }
+        },
+      "images": {
+        "large": "/drivers/p1_dongle/assets/images/large.png",
+        "small": "/drivers/p1_dongle/assets/images/small.png"
+      }
+    }
