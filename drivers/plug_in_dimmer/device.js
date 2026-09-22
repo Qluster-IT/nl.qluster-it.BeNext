@@ -7,16 +7,20 @@ const ZwaveDevice = require('homey-zwavedriver').ZwaveDevice;
 
 class PluginDimmerDevice extends ZwaveDevice {
 
-onNodeInit(){
-			this.enableDebug();
+	onNodeInit(){
+		this.enableDebug();
 		this.printNode();
-this.registerCapability('onoff', 'SWITCH_MULTILEVEL');
-this.registerCapability('dim', 'SWITCH_MULTILEVEL');
-this.registerCapability('measure_power', 'METER');
-this.registerCapability('meter_power', 'METER');
-
-
-}
+		this.registerCapability('onoff', 'SWITCH_MULTILEVEL');
+		this.registerCapability('dim', 'SWITCH_MULTILEVEL');
+		this.registerCapability('measure_power', 'METER');
+		this.registerCapability('meter_power', 'METER', {
+			getOpts: {
+				getOnStart: true,
+				pollInterval: 15 * 60 * 1000,
+			},
+		});
+	}
+	
 }
 
 module.exports = PluginDimmerDevice;
