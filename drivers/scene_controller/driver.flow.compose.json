@@ -1,0 +1,73 @@
+{
+  "triggers": [
+    {
+      "id": "scene_controller_button",
+      "title": {
+        "en": "A button is pressed",
+        "nl": "Een knop is ingedrukt"
+      },
+      "titleFormatted": {
+        "en": "Button [[button]] is [[press]]",
+        "nl": "Knop [[button]] is [[press]]"
+      },
+      "args": [
+        {
+          "type": "dropdown",
+          "name": "button",
+          "title": {
+            "en": "Button",
+            "nl": "Knop"
+          },
+          "values": [
+            { "id": "1", "label": { "en": "1", "nl": "1" } },
+            { "id": "2", "label": { "en": "2", "nl": "2" } },
+            { "id": "3", "label": { "en": "3", "nl": "3" } },
+            { "id": "4", "label": { "en": "4", "nl": "4" } },
+            { "id": "5", "label": { "en": "5", "nl": "5" } },
+            { "id": "6", "label": { "en": "6", "nl": "6" } },
+            { "id": "7", "label": { "en": "7", "nl": "7" } }
+          ]
+        },
+        {
+          "type": "dropdown",
+          "name": "press",
+          "title": {
+            "en": "Press",
+            "nl": "Druk"
+          },
+          "values": [
+            { "id": "single", "label": { "en": "pressed once", "nl": "één keer ingedrukt" } },
+            { "id": "double", "label": { "en": "pressed twice", "nl": "twee keer ingedrukt" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_controller_any_button",
+      "title": {
+        "en": "Any button is pressed",
+        "nl": "Een willekeurige knop is ingedrukt"
+      },
+      "tokens": [
+        {
+          "name": "button",
+          "type": "number",
+          "title": {
+            "en": "Button",
+            "nl": "Knop"
+          },
+          "example": 1
+        },
+        {
+          "name": "press",
+          "type": "string",
+          "title": {
+            "en": "Press (single/double)",
+            "nl": "Druk (single/double)"
+          },
+          "example": "single"
+        }
+      ]
+    }
+  ]
+}

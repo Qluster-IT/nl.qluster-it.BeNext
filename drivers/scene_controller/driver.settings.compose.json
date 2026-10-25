@@ -1,0 +1,24 @@
+[
+  {
+    "id": "double_press_time",
+    "type": "number",
+    "zwave": {
+      "index": 16,
+      "size": 1,
+      "signed": false
+    },
+    "label": {
+      "en": "Double press time",
+      "nl": "Dubbelklik tijd"
+    },
+    "hint": {
+      "en": "Time (in 10 ms) to press a button a second time for a double press. Saved the next time the device wakes up: hold a button for 18 seconds to wake it up.",
+      "nl": "Tijd (in 10 ms) om een knop een tweede keer in te drukken voor een dubbelklik. Wordt opgeslagen zodra het apparaat wakker wordt: houd een knop 18 seconden ingedrukt om het wakker te maken."
+    },
+    "value": 20,
+    "attr": {
+      "min": 1,
+      "max": 255
+    }
+  }
+]

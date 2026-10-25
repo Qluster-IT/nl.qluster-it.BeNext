@@ -1,0 +1,44 @@
+{
+  "id": "scene_controller",
+  "name": {
+    "en": "Scene Controller",
+    "nl": "Scene Controller"
+  },
+  "zwave": {
+    "manufacturerId": 138,
+    "productTypeId": 23,
+    "productId": 256,
+    "learnmode": {
+      "image": "/drivers/scene_controller/assets/learnmode.svg",
+      "instruction": {
+        "en": "Hold button 5 for 2 seconds, then release it.",
+        "nl": "Houd knop 5 2 seconden ingedrukt en laat hem dan los."
+      }
+    },
+    "unlearnmode": {
+      "image": "/drivers/scene_controller/assets/learnmode.svg",
+      "instruction": {
+        "en": "Hold button 5 for 12 seconds, or until the LED starts blinking, then release it.",
+        "nl": "Houd knop 5 12 seconden ingedrukt, of tot het lampje gaat knipperen, en laat hem dan los."
+      }
+    },
+    "associationGroups": [
+      1
+    ],
+    "wakeUpInterval": 86400
+  },
+  "class": "remote",
+  "capabilities": [
+    "measure_battery"
+  ],
+  "energy": {
+    "batteries": [
+      "AAA",
+      "AAA"
+    ]
+  },
+  "images": {
+    "large": "/drivers/scene_controller/assets/images/large.png",
+    "small": "/drivers/scene_controller/assets/images/small.png"
+  }
+}
