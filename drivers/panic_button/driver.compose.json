@@ -1,0 +1,53 @@
+{
+  "id": "panic_button",
+  "name": {
+    "en": "Panic Button",
+    "nl": "Paniekknop"
+  },
+  "zwave": {
+    "manufacturerId": 138,
+    "productTypeId": 20,
+    "productId": [
+      256,
+      257
+    ],
+    "learnmode": {
+      "image": "/drivers/panic_button/assets/learnmode.svg",
+      "instruction": {
+        "en": "Hold the SOS button until the LED starts blinking, then release it.",
+        "nl": "Houd de SOS knop ingedrukt tot het lampje gaat knipperen en laat hem dan los."
+      }
+    },
+    "unlearnmode": {
+      "image": "/drivers/panic_button/assets/learnmode.svg",
+      "instruction": {
+        "en": "Hold the SOS button for 12 seconds, or until the LED starts blinking, then release it.",
+        "nl": "Houd de SOS knop 12 seconden ingedrukt, of tot het lampje gaat knipperen, en laat hem dan los."
+      }
+    },
+    "associationGroups": [
+      1
+    ],
+    "defaultConfiguration": [
+      {
+        "id": 4,
+        "size": 1,
+        "value": 0
+      }
+    ],
+    "wakeUpInterval": 86400
+  },
+  "class": "button",
+  "capabilities": [
+    "measure_battery"
+  ],
+  "energy": {
+    "batteries": [
+      "CR2032"
+    ]
+  },
+  "images": {
+    "large": "/drivers/panic_button/assets/images/large.png",
+    "small": "/drivers/panic_button/assets/images/small.png"
+  }
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "id": "press_time",
+    "type": "number",
+    "zwave": {
+      "index": 2,
+      "size": 1,
+      "signed": false
+    },
+    "label": {
+      "en": "Hold time",
+      "nl": "Indruktijd"
+    },
+    "hint": {
+      "en": "How long (in 10 ms) the SOS button must be held to count as held. Shorter presses count as pressed. Saved the next time the device wakes up: hold the button for 4 seconds to wake it up.",
+      "nl": "Hoe lang (in 10 ms) de SOS knop ingedrukt moet worden om als vastgehouden te tellen. Korter telt als ingedrukt. Wordt opgeslagen zodra het apparaat wakker wordt: houd de knop 4 seconden ingedrukt om het wakker te maken."
+    },
+    "value": 100,
+    "attr": {
+      "min": 0,
+      "max": 255
+    }
+  },
+  {
+    "id": "led_feedback_time",
+    "type": "number",
+    "zwave": {
+      "index": 3,
+      "size": 1,
+      "signed": false
+    },
+    "label": {
+      "en": "LED feedback time",
+      "nl": "Lampje feedback tijd"
+    },
+    "hint": {
+      "en": "How long (in 10 ms) the LED stays on after the message is sent.",
+      "nl": "Hoe lang (in 10 ms) het lampje aan blijft nadat het bericht is verstuurd."
+    },
+    "value": 100,
+    "attr": {
+      "min": 0,
+      "max": 255
+    }
+  }
+]

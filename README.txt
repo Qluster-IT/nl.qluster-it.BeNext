@@ -16,3 +16,4 @@ Currently supported devices:
 * Heating control
 * Energy switch plus
 * Scene Controller
+* Panic Button
