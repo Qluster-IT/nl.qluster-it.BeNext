@@ -477,14 +477,13 @@
           }
         },
         "associationGroups": [
-          1,
-          2
+          1
         ],
         "defaultConfiguration": [
           {
             "id": 7,
             "size": 1,
-            "value": 1
+            "value": 255
           }
         ]
       },
@@ -497,8 +496,15 @@
       ],
       "capabilitiesOptions": {
         "target_temperature": {
-          "min": 7.5,
-          "max": 32.5
+          "min": 5,
+          "max": 30,
+          "step": 0.5
+        },
+        "measure_temperature.outside": {
+          "title": {
+            "en": "Outside temperature",
+            "nl": "Buitentemperatuur"
+          }
         }
       },
       "images": {
@@ -527,6 +533,88 @@
               "label": {
                 "en": "Permanently",
                 "nl": "Permanent"
+              }
+            }
+          ]
+        },
+        {
+          "id": "setpoint_update_difference",
+          "type": "number",
+          "zwave": {
+            "index": 4,
+            "size": 1,
+            "signed": false
+          },
+          "label": {
+            "en": "Setpoint report difference",
+            "nl": "Setpoint rapportage verschil"
+          },
+          "hint": {
+            "en": "How much the setpoint must change (in 0.1 °C) before the device reports it.",
+            "nl": "Hoeveel het setpoint moet veranderen (in 0,1 °C) voordat het apparaat dit rapporteert."
+          },
+          "value": 5,
+          "attr": {
+            "min": 1,
+            "max": 255
+          }
+        },
+        {
+          "id": "status_auto_report",
+          "type": "dropdown",
+          "zwave": {
+            "index": 7,
+            "size": 1,
+            "signed": false
+          },
+          "label": {
+            "en": "Status auto report",
+            "nl": "Status automatisch rapporteren"
+          },
+          "value": "255",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Disabled",
+                "nl": "Uit"
+              }
+            },
+            {
+              "id": "255",
+              "label": {
+                "en": "Enabled",
+                "nl": "Aan"
+              }
+            }
+          ]
+        },
+        {
+          "id": "thermostat_schedule",
+          "type": "dropdown",
+          "zwave": {
+            "index": 9,
+            "size": 1,
+            "signed": false
+          },
+          "label": {
+            "en": "Internal thermostat schedule",
+            "nl": "Intern thermostaat schema"
+          },
+          "value": "0",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Disabled",
+                "nl": "Uit"
+              }
+            },
+            {
+              "id": "255",
+              "label": {
+                "en": "Enabled",
+                "nl": "Aan"
               }
             }
           ]
@@ -733,6 +821,105 @@
       ]
     },
     {
+      "id": "panic_button",
+      "name": {
+        "en": "Panic Button",
+        "nl": "Paniekknop"
+      },
+      "zwave": {
+        "manufacturerId": 138,
+        "productTypeId": 20,
+        "productId": [
+          256,
+          257
+        ],
+        "learnmode": {
+          "image": "/drivers/panic_button/assets/learnmode.svg",
+          "instruction": {
+            "en": "Hold the SOS button until the LED starts blinking, then release it.",
+            "nl": "Houd de SOS knop ingedrukt tot het lampje gaat knipperen en laat hem dan los."
+          }
+        },
+        "unlearnmode": {
+          "image": "/drivers/panic_button/assets/learnmode.svg",
+          "instruction": {
+            "en": "Hold the SOS button for 12 seconds, or until the LED starts blinking, then release it.",
+            "nl": "Houd de SOS knop 12 seconden ingedrukt, of tot het lampje gaat knipperen, en laat hem dan los."
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "defaultConfiguration": [
+          {
+            "id": 4,
+            "size": 1,
+            "value": 0
+          }
+        ],
+        "wakeUpInterval": 86400
+      },
+      "class": "button",
+      "capabilities": [
+        "measure_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2032"
+        ]
+      },
+      "images": {
+        "large": "/drivers/panic_button/assets/images/large.png",
+        "small": "/drivers/panic_button/assets/images/small.png"
+      },
+      "settings": [
+        {
+          "id": "press_time",
+          "type": "number",
+          "zwave": {
+            "index": 2,
+            "size": 1,
+            "signed": false
+          },
+          "label": {
+            "en": "Hold time",
+            "nl": "Indruktijd"
+          },
+          "hint": {
+            "en": "How long (in 10 ms) the SOS button must be held to count as held. Shorter presses count as pressed. Saved the next time the device wakes up: hold the button for 4 seconds to wake it up.",
+            "nl": "Hoe lang (in 10 ms) de SOS knop ingedrukt moet worden om als vastgehouden te tellen. Korter telt als ingedrukt. Wordt opgeslagen zodra het apparaat wakker wordt: houd de knop 4 seconden ingedrukt om het wakker te maken."
+          },
+          "value": 100,
+          "attr": {
+            "min": 0,
+            "max": 255
+          }
+        },
+        {
+          "id": "led_feedback_time",
+          "type": "number",
+          "zwave": {
+            "index": 3,
+            "size": 1,
+            "signed": false
+          },
+          "label": {
+            "en": "LED feedback time",
+            "nl": "Lampje feedback tijd"
+          },
+          "hint": {
+            "en": "How long (in 10 ms) the LED stays on after the message is sent.",
+            "nl": "Hoe lang (in 10 ms) het lampje aan blijft nadat het bericht is verstuurd."
+          },
+          "value": 100,
+          "attr": {
+            "min": 0,
+            "max": 255
+          }
+        }
+      ]
+    },
+    {
       "id": "plug_in_dimmer",
       "name": {
         "en": "Plug-in Dimmer",
@@ -848,6 +1035,74 @@
               }
             }
           ]
+        }
+      ]
+    },
+    {
+      "id": "scene_controller",
+      "name": {
+        "en": "Scene Controller",
+        "nl": "Scene Controller"
+      },
+      "zwave": {
+        "manufacturerId": 138,
+        "productTypeId": 23,
+        "productId": 256,
+        "learnmode": {
+          "image": "/drivers/scene_controller/assets/learnmode.svg",
+          "instruction": {
+            "en": "Hold button 5 for 2 seconds, then release it.",
+            "nl": "Houd knop 5 2 seconden ingedrukt en laat hem dan los."
+          }
+        },
+        "unlearnmode": {
+          "image": "/drivers/scene_controller/assets/learnmode.svg",
+          "instruction": {
+            "en": "Hold button 5 for 12 seconds, or until the LED starts blinking, then release it.",
+            "nl": "Houd knop 5 12 seconden ingedrukt, of tot het lampje gaat knipperen, en laat hem dan los."
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "wakeUpInterval": 86400
+      },
+      "class": "remote",
+      "capabilities": [
+        "measure_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "AAA",
+          "AAA"
+        ]
+      },
+      "images": {
+        "large": "/drivers/scene_controller/assets/images/large.png",
+        "small": "/drivers/scene_controller/assets/images/small.png"
+      },
+      "settings": [
+        {
+          "id": "double_press_time",
+          "type": "number",
+          "zwave": {
+            "index": 16,
+            "size": 1,
+            "signed": false
+          },
+          "label": {
+            "en": "Double press time",
+            "nl": "Dubbelklik tijd"
+          },
+          "hint": {
+            "en": "Time (in 10 ms) to press a button a second time for a double press. Saved the next time the device wakes up: hold a button for 18 seconds to wake it up.",
+            "nl": "Tijd (in 10 ms) om een knop een tweede keer in te drukken voor een dubbelklik. Wordt opgeslagen zodra het apparaat wakker wordt: houd een knop 18 seconden ingedrukt om het wakker te maken."
+          },
+          "value": 20,
+          "attr": {
+            "min": 1,
+            "max": 255
+          }
         }
       ]
     },
@@ -1086,6 +1341,197 @@
   ],
   "flow": {
     "triggers": [
+      {
+        "id": "panic_button_sos_held",
+        "title": {
+          "en": "SOS button is held (2 seconds)",
+          "nl": "SOS knop is ingedrukt gehouden (2 seconden)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=panic_button"
+          }
+        ]
+      },
+      {
+        "id": "panic_button_sos_pressed",
+        "title": {
+          "en": "SOS button is pressed",
+          "nl": "SOS knop is ingedrukt"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=panic_button"
+          }
+        ]
+      },
+      {
+        "id": "panic_button_lock",
+        "title": {
+          "en": "Lock button is pressed",
+          "nl": "Slot knop is ingedrukt"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=panic_button"
+          }
+        ]
+      },
+      {
+        "id": "panic_button_unlock",
+        "title": {
+          "en": "Unlock button is pressed",
+          "nl": "Ontgrendel knop is ingedrukt"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=panic_button"
+          }
+        ]
+      },
+      {
+        "id": "scene_controller_button",
+        "title": {
+          "en": "A button is pressed",
+          "nl": "Een knop is ingedrukt"
+        },
+        "titleFormatted": {
+          "en": "Button [[button]] is [[press]]",
+          "nl": "Knop [[button]] is [[press]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scene_controller"
+          },
+          {
+            "type": "dropdown",
+            "name": "button",
+            "title": {
+              "en": "Button",
+              "nl": "Knop"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1",
+                  "nl": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2",
+                  "nl": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3",
+                  "nl": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4",
+                  "nl": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5",
+                  "nl": "5"
+                }
+              },
+              {
+                "id": "6",
+                "label": {
+                  "en": "6",
+                  "nl": "6"
+                }
+              },
+              {
+                "id": "7",
+                "label": {
+                  "en": "7",
+                  "nl": "7"
+                }
+              }
+            ]
+          },
+          {
+            "type": "dropdown",
+            "name": "press",
+            "title": {
+              "en": "Press",
+              "nl": "Druk"
+            },
+            "values": [
+              {
+                "id": "single",
+                "label": {
+                  "en": "pressed once",
+                  "nl": "één keer ingedrukt"
+                }
+              },
+              {
+                "id": "double",
+                "label": {
+                  "en": "pressed twice",
+                  "nl": "twee keer ingedrukt"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "scene_controller_any_button",
+        "title": {
+          "en": "Any button is pressed",
+          "nl": "Een willekeurige knop is ingedrukt"
+        },
+        "tokens": [
+          {
+            "name": "button",
+            "type": "number",
+            "title": {
+              "en": "Button",
+              "nl": "Knop"
+            },
+            "example": 1
+          },
+          {
+            "name": "press",
+            "type": "string",
+            "title": {
+              "en": "Press (single/double)",
+              "nl": "Druk (single/double)"
+            },
+            "example": "single"
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scene_controller"
+          }
+        ]
+      },
       {
         "id": "tagReader-start_scene",
         "title": {

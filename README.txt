@@ -15,3 +15,5 @@ Currently supported devices:
 * Window/door sensor
 * Heating control
 * Energy switch plus
+* Scene Controller
+* Panic Button

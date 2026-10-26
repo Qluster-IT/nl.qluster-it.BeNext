@@ -1,0 +1,32 @@
+{
+  "triggers": [
+    {
+      "id": "panic_button_sos_held",
+      "title": {
+        "en": "SOS button is held (2 seconds)",
+        "nl": "SOS knop is ingedrukt gehouden (2 seconden)"
+      }
+    },
+    {
+      "id": "panic_button_sos_pressed",
+      "title": {
+        "en": "SOS button is pressed",
+        "nl": "SOS knop is ingedrukt"
+      }
+    },
+    {
+      "id": "panic_button_lock",
+      "title": {
+        "en": "Lock button is pressed",
+        "nl": "Slot knop is ingedrukt"
+      }
+    },
+    {
+      "id": "panic_button_unlock",
+      "title": {
+        "en": "Unlock button is pressed",
+        "nl": "Ontgrendel knop is ingedrukt"
+      }
+    }
+  ]
+}
