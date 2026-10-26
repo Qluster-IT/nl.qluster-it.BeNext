@@ -660,19 +660,11 @@
       "capabilities": [
         "alarm_motion",
         "alarm_tamper",
-        "measure_luminance",
+        "light_level",
         "measure_temperature",
         "measure_battery",
         "alarm_battery"
       ],
-      "capabilitiesOptions": {
-        "measure_luminance": {
-          "units": {
-            "en": "%"
-          },
-          "decimals": 0
-        }
-      },
       "energy": {
         "batteries": [
           "AA",
@@ -1440,6 +1432,115 @@
   "flow": {
     "triggers": [
       {
+        "id": "molite_light_level_changed",
+        "title": {
+          "en": "The light level changed",
+          "nl": "Het lichtniveau is veranderd"
+        },
+        "hint": {
+          "en": "The sensor measures light in steps of 10%, every time it wakes up.",
+          "nl": "De sensor meet licht in stappen van 10%, elke keer dat hij wakker wordt."
+        },
+        "tokens": [
+          {
+            "name": "light_level",
+            "type": "number",
+            "title": {
+              "en": "Light level (%)",
+              "nl": "Lichtniveau (%)"
+            },
+            "example": 30
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=molite_sensor"
+          }
+        ]
+      },
+      {
+        "id": "molite_light_level_above",
+        "title": {
+          "en": "The light level rose above a value",
+          "nl": "Het lichtniveau is boven een waarde gestegen"
+        },
+        "titleFormatted": {
+          "en": "The light level rose above [[level]] %",
+          "nl": "Het lichtniveau is boven [[level]] % gestegen"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=molite_sensor"
+          },
+          {
+            "type": "number",
+            "name": "level",
+            "placeholder": {
+              "en": "50",
+              "nl": "50"
+            },
+            "min": 0,
+            "max": 100,
+            "step": 10
+          }
+        ],
+        "tokens": [
+          {
+            "name": "light_level",
+            "type": "number",
+            "title": {
+              "en": "Light level (%)",
+              "nl": "Lichtniveau (%)"
+            },
+            "example": 60
+          }
+        ]
+      },
+      {
+        "id": "molite_light_level_below",
+        "title": {
+          "en": "The light level dropped below a value",
+          "nl": "Het lichtniveau is onder een waarde gezakt"
+        },
+        "titleFormatted": {
+          "en": "The light level dropped below [[level]] %",
+          "nl": "Het lichtniveau is onder [[level]] % gezakt"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=molite_sensor"
+          },
+          {
+            "type": "number",
+            "name": "level",
+            "placeholder": {
+              "en": "30",
+              "nl": "30"
+            },
+            "min": 0,
+            "max": 100,
+            "step": 10
+          }
+        ],
+        "tokens": [
+          {
+            "name": "light_level",
+            "type": "number",
+            "title": {
+              "en": "Light level (%)",
+              "nl": "Lichtniveau (%)"
+            },
+            "example": 20
+          }
+        ]
+      },
+      {
         "id": "panic_button_sos_held",
         "title": {
           "en": "SOS button is held (2 seconds)",
@@ -1880,6 +1981,35 @@
     ],
     "conditions": [
       {
+        "id": "molite_light_level_is_above",
+        "title": {
+          "en": "The light level is !{{above|not above}} a value",
+          "nl": "Het lichtniveau is !{{boven|niet boven}} een waarde"
+        },
+        "titleFormatted": {
+          "en": "The light level is !{{above|not above}} [[level]] %",
+          "nl": "Het lichtniveau is !{{boven|niet boven}} [[level]] %"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=molite_sensor"
+          },
+          {
+            "type": "number",
+            "name": "level",
+            "placeholder": {
+              "en": "50",
+              "nl": "50"
+            },
+            "min": 0,
+            "max": 100,
+            "step": 10
+          }
+        ]
+      },
+      {
         "id": "tagReader-is_at_home",
         "title": {
           "en": "Is !{{|not}} at home",
@@ -1994,6 +2124,23 @@
       "min": 0,
       "max": 100,
       "step": 1
+    },
+    "light_level": {
+      "type": "number",
+      "title": {
+        "en": "Light level",
+        "nl": "Lichtniveau"
+      },
+      "units": {
+        "en": "%"
+      },
+      "decimals": 0,
+      "min": 0,
+      "max": 100,
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true
     },
     "my_gateway_control": {
       "type": "number",

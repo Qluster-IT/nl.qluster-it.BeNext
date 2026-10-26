@@ -1,0 +1,17 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Light level",
+    "nl": "Lichtniveau"
+  },
+  "units": {
+    "en": "%"
+  },
+  "decimals": 0,
+  "min": 0,
+  "max": 100,
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "insights": true
+}

@@ -17,11 +17,17 @@ class MoliteSensorDevice extends ZwaveDevice {
 	async onNodeInit() {
 		// The sensor sends a battery low warning below 20%; measure_battery sets alarm_battery
 		if (!this.hasCapability('alarm_battery')) await this.addCapability('alarm_battery');
-		// Devices paired before light was shown in percent still have the lux unit
-		const luminanceOptions = this.getCapabilityOptions('measure_luminance') || {};
-		if (!luminanceOptions.units || luminanceOptions.units.en !== '%') {
-			await this.setCapabilityOptions('measure_luminance', { units: { en: '%' }, decimals: 0 }).catch(err => this.error(err));
-		}
+		// Light is a percentage, not lux: devices paired before light_level still have measure_luminance
+		if (this.hasCapability('measure_luminance')) await this.removeCapability('measure_luminance');
+		if (!this.hasCapability('light_level')) await this.addCapability('light_level');
+
+		this.lightLevelChangedTrigger = this.homey.flow.getDeviceTriggerCard('molite_light_level_changed');
+		this.lightLevelAboveTrigger = this.homey.flow.getDeviceTriggerCard('molite_light_level_above');
+		this.lightLevelAboveTrigger.registerRunListener((args, state) => state.previous <= Number(args.level) && state.level > Number(args.level));
+		this.lightLevelBelowTrigger = this.homey.flow.getDeviceTriggerCard('molite_light_level_below');
+		this.lightLevelBelowTrigger.registerRunListener((args, state) => state.previous >= Number(args.level) && state.level < Number(args.level));
+		this.homey.flow.getConditionCard('molite_light_level_is_above')
+			.registerRunListener(args => args.device.getCapabilityValue('light_level') > Number(args.level));
 
 		this.registerCapability('alarm_motion', 'SENSOR_BINARY');
 		this.registerCapability('alarm_motion', 'BASIC', {
@@ -68,7 +74,8 @@ class MoliteSensorDevice extends ZwaveDevice {
 				return null;
 			}
 		});
-		this.registerCapability('measure_luminance', 'SENSOR_MULTILEVEL', {
+		this.registerCapability('light_level', 'SENSOR_MULTILEVEL', {
+			get: 'SENSOR_MULTILEVEL_GET',
 			getOpts: {
 				getOnOnline: true,
 			},
@@ -78,8 +85,31 @@ class MoliteSensorDevice extends ZwaveDevice {
 					Scale: 0,
 				},
 			}),
+			report: 'SENSOR_MULTILEVEL_REPORT',
+			reportParser: report => {
+				if (report &&
+				    report['Sensor Type'] === 'Luminance (version 1)' &&
+				    report.hasOwnProperty('Sensor Value (Parsed)')) {
+					const level = report['Sensor Value (Parsed)'];
+					this._onLightLevel(level);
+					return level;
+				}
+				return null;
+			}
 		});
 		this.registerCapability('measure_battery', 'BATTERY');
+	}
+
+	_onLightLevel(level) {
+		const previous = this.getCapabilityValue('light_level');
+		if (level === previous) return;
+		const tokens = { light_level: level };
+		this.lightLevelChangedTrigger.trigger(this, tokens).catch(err => this.error(err));
+		// Crossing a level needs a previous value to compare with
+		if (typeof previous !== 'number') return;
+		const state = { previous, level };
+		this.lightLevelAboveTrigger.trigger(this, tokens, state).catch(err => this.error(err));
+		this.lightLevelBelowTrigger.trigger(this, tokens, state).catch(err => this.error(err));
 	}
 }
 
