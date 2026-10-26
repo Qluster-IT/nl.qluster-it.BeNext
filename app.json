@@ -2140,7 +2140,8 @@
       "getable": true,
       "setable": false,
       "uiComponent": "sensor",
-      "insights": true
+      "insights": true,
+      "icon": "/assets/capabilities/light_level.svg"
     },
     "my_gateway_control": {
       "type": "number",
