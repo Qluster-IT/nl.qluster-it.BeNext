@@ -33,19 +33,11 @@
       "capabilities": [
         "alarm_motion",
         "alarm_tamper",
-        "measure_luminance",
+        "light_level",
         "measure_temperature",
         "measure_battery",
         "alarm_battery"
       ],
-      "capabilitiesOptions": {
-        "measure_luminance": {
-          "units": {
-            "en": "%"
-          },
-          "decimals": 0
-        }
-      },
       "energy": {
       "batteries": [ "AA", "AA" ]
       },
