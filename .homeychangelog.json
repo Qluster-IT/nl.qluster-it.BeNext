@@ -1,30 +1,138 @@
 {
   "1.3.0": {
-    "en": "Updated to SDK3!"
+    "en": "Updated to SDK3!",
+    "nl": "Bijgewerkt naar SDK3!",
+    "da": "Opdateret til SDK3!",
+    "de": "Auf SDK3 aktualisiert!",
+    "es": "¡Actualizado a SDK3!",
+    "fr": "Mis à jour vers SDK3 !",
+    "it": "Aggiornato a SDK3!",
+    "no": "Oppdatert til SDK3!",
+    "sv": "Uppdaterad till SDK3!",
+    "pl": "Zaktualizowano do SDK3!",
+    "ru": "Обновлено до SDK3!",
+    "ko": "SDK3로 업데이트되었습니다!",
+    "ar": "تم التحديث إلى SDK3!"
   },
   "1.3.1": {
-    "en": "TESTVERSION: Finding an SDK3 bug for Heating_Control!"
+    "en": "TESTVERSION: Finding an SDK3 bug for Heating_Control!",
+    "nl": "TESTVERSIE: Een SDK3-bug vinden voor Heating_Control!",
+    "da": "TESTVERSION: Finder en SDK3-fejl for Heating_Control!",
+    "de": "TESTVERSION: Einen SDK3-Fehler für Heating_Control finden!",
+    "es": "VERSIÓN DE PRUEBA: ¡Encontrando un error de SDK3 para Heating_Control!",
+    "fr": "VERSION DE TEST : Recherche d'un bug SDK3 pour Heating_Control !",
+    "it": "VERSIONE DI TEST: Trovare un bug SDK3 per Heating_Control!",
+    "no": "TESTVERSJON: Finne en SDK3-feil for Heating_Control!",
+    "sv": "TESTVERSION: Hitta en SDK3-bugg för Heating_Control!",
+    "pl": "WERSJA TESTOWA: Znalezienie błędu SDK3 dla Heating_Control!",
+    "ru": "ТЕСТОВАЯ ВЕРСИЯ: Поиск ошибки SDK3 для Heating_Control!",
+    "ko": "테스트 버전: Heating_Control의 SDK3 버그 찾기!",
+    "ar": "إصدار تجريبي: العثور على خطأ SDK3 في التحكم في التدفئة!"
   },
   "1.3.2": {
-    "en": "TESTVERSION: Finding an SDK3 bug for Heating_Control!"
+    "en": "TESTVERSION: Finding an SDK3 bug for Heating_Control!",
+    "nl": "TESTVERSIE: Een SDK3-bug vinden voor Heating_Control!",
+    "da": "TESTVERSION: Finder en SDK3-fejl for Heating_Control!",
+    "de": "TESTVERSION: Einen SDK3-Fehler für Heating_Control finden!",
+    "es": "VERSIÓN DE PRUEBA: ¡Encontrando un error de SDK3 para Heating_Control!",
+    "fr": "VERSION DE TEST : Recherche d'un bug SDK3 pour Heating_Control !",
+    "it": "VERSIONE DI TEST: Trovare un bug SDK3 per Heating_Control!",
+    "no": "TESTVERSJON: Finne en SDK3-feil for Heating_Control!",
+    "sv": "TESTVERSION: Hitta en SDK3-bugg för Heating_Control!",
+    "pl": "WERSJA TESTOWA: Znalezienie błędu SDK3 dla Heating_Control!",
+    "ru": "ТЕСТОВАЯ ВЕРСИЯ: Поиск ошибки SDK3 для Heating_Control!",
+    "ko": "테스트 버전: Heating_Control의 SDK3 버그 찾기!",
+    "ar": "إصدار تجريبي: العثور على خطأ SDK3 في التحكم في التدفئة!"
   },
   "1.3.3": {
-    "en": "TESTVERSION: Finding an SDK3 bug for Heating_Control!"
+    "en": "TESTVERSION: Finding an SDK3 bug for Heating_Control!",
+    "nl": "TESTVERSIE: Een SDK3-bug vinden voor Heating_Control!",
+    "da": "TESTVERSION: Finder en SDK3-fejl for Heating_Control!",
+    "de": "TESTVERSION: Einen SDK3-Fehler für Heating_Control finden!",
+    "es": "VERSIÓN DE PRUEBA: ¡Encontrando un error de SDK3 para Heating_Control!",
+    "fr": "VERSION DE TEST : Recherche d'un bug SDK3 pour Heating_Control !",
+    "it": "VERSIONE DI TEST: Trovare un bug SDK3 per Heating_Control!",
+    "no": "TESTVERSJON: Finner en SDK3-feil for Heating_Control!",
+    "sv": "TESTVERSION: Hitta en SDK3-bugg för Heating_Control!",
+    "pl": "WERSJA TESTOWA: Znalezienie błędu SDK3 dla Heating_Control!",
+    "ru": "ТЕСТОВАЯ ВЕРСИЯ: Поиск ошибки SDK3 для Heating_Control!",
+    "ko": "테스트 버전: Heating_Control의 SDK3 버그 찾기!",
+    "ar": "إصدار تجريبي: العثور على خطأ SDK3 في التحكم في التدفئة!"
   },
   "1.3.4": {
-    "en": "Fixed: P1 dongle fixed."
+    "en": "Fixed: P1 dongle fixed.",
+    "nl": "Opgelost: P1 dongle gerepareerd.",
+    "da": "Rettet: P1 dongle rettet.",
+    "de": "Behoben: P1-Dongle behoben.",
+    "es": "Arreglado: Dongle P1 arreglado.",
+    "fr": "Corrigé : Dongle P1 réparé.",
+    "it": "Risolto: Dongle P1 risolto.",
+    "no": "Fikset: P1-dongle fikset.",
+    "sv": "Åtgärdat: P1-dongel åtgärdad.",
+    "pl": "Naprawiono: Naprawiono dongle P1.",
+    "ru": "Исправлено: P1 донгл исправлен.",
+    "ko": "수정됨: P1 동글이 수정되었습니다.",
+    "ar": "تم الإصلاح: تم إصلاح دونجل P1."
   },
   "1.3.5": {
-    "en": "Fixed: P1 dongle fixed."
+    "en": "Fixed: P1 dongle fixed.",
+    "nl": "Opgelost: P1 dongle gerepareerd.",
+    "da": "Rettet: P1 dongle rettet.",
+    "de": "Behoben: P1-Dongle behoben.",
+    "es": "Corregido: Dongle P1 arreglado.",
+    "fr": "Corrigé : Dongle P1 réparé.",
+    "it": "Risolto: Dongle P1 risolto.",
+    "no": "Fikset: P1-dongle fikset.",
+    "sv": "Åtgärdat: P1-dongel åtgärdad.",
+    "pl": "Naprawiono: Naprawiono dongle P1.",
+    "ru": "Исправлено: P1 донгл исправлен.",
+    "ko": "수정됨: P1 동글이 수정되었습니다.",
+    "ar": "تم الإصلاح: تم إصلاح دونجل P1."
   },
   "1.3.6": {
-    "en": "Fixed: P1 dongle fixed."
+    "en": "Fixed: P1 dongle fixed.",
+    "nl": "Opgelost: P1 dongle gerepareerd.",
+    "da": "Rettet: P1 dongle rettet.",
+    "de": "Behoben: P1-Dongle behoben.",
+    "es": "Solucionado: Dongle P1 arreglado.",
+    "fr": "Corrigé : Dongle P1 réparé.",
+    "it": "Risolto: Dongle P1 risolto.",
+    "no": "Fikset: P1-dongle fikset.",
+    "sv": "Åtgärdat: P1-dongel åtgärdad.",
+    "pl": "Naprawiono: Naprawiono dongle P1.",
+    "ru": "Исправлено: P1 донгл исправлен.",
+    "ko": "수정됨: P1 동글이 수정되었습니다.",
+    "ar": "تم الإصلاح: تم إصلاح دونجل P1."
   },
   "1.3.7": {
-    "en": "Bugfixing: P1 Dongle and heating control."
+    "en": "Bugfixing: P1 Dongle and heating control.",
+    "nl": "Bugfixes: P1 Dongle en verwarmingsregeling.",
+    "da": "Fejlrettelse: P1 Dongle og varme kontrol.",
+    "de": "Fehlerbehebung: P1 Dongle und Heizungssteuerung.",
+    "es": "Corrección de errores: Dongle P1 y control de calefacción.",
+    "fr": "Correction de bugs : Dongle P1 et contrôle du chauffage.",
+    "it": "Correzione bug: Dongle P1 e controllo del riscaldamento.",
+    "no": "Feilretting: P1 Dongle og varme kontroll.",
+    "sv": "Buggfixar: P1 Dongle och värmestyrning.",
+    "pl": "Poprawki błędów: P1 Dongle i kontrola ogrzewania.",
+    "ru": "Исправление ошибок: P1 Dongle и управление отоплением.",
+    "ko": "버그 수정: P1 동글 및 난방 제어.",
+    "ar": "إصلاح الأخطاء: دونجل P1 والتحكم في التدفئة."
   },
   "1.3.8": {
-    "en": "Bugfixing: Polling of meter (kWh)."
+    "en": "Bugfixing: Polling of meter (kWh).",
+    "nl": "Bugfixen: Polling van meter (kWh).",
+    "da": "Fejlrettelse: Polling af måler (kWh).",
+    "de": "Fehlerbehebung: Abfrage des Zählers (kWh).",
+    "es": "Corrección de errores: Sondeo del medidor (kWh).",
+    "fr": "Correction de bugs : Interrogation du compteur (kWh).",
+    "it": "Correzione bug: Polling del contatore (kWh).",
+    "no": "Feilretting: Polling av måler (kWh).",
+    "sv": "Buggfix: Pollning av mätare (kWh).",
+    "pl": "Poprawki: Odpytywanie licznika (kWh).",
+    "ru": "Исправление ошибок: опрос счетчика (кВтч).",
+    "ko": "버그 수정: 미터(kWh) 폴링.",
+    "ar": "إصلاح الأخطاء: استقصاء عداد (كيلوواط ساعة)."
   },
   "1.3.9": {
     "en": "Changed sourcecode and issues from Bitbucket to GitHub.",
@@ -40,5 +148,20 @@
     "ru": "Изменили исходный код и задачи с Bitbucket на GitHub.",
     "ko": "소스 코드와 문제를 Bitbucket에서 GitHub로 변경했습니다.",
     "ar": "تم تغيير الشيفرة المصدرية والمشكلات من Bitbucket إلى GitHub."
+  },
+  "1.4.0": {
+    "en": "Heating Control fixed, Added Scene Controller and Panic Button drivers.",
+    "nl": "Verwarming bediening opgelost, Scene Controller en Paniekknop drivers toegevoegd.",
+    "da": "Opvarmningskontrol rettet, tilføjet Scene Controller og Panic Button drivere.",
+    "de": "Heizungssteuerung behoben, Szenen-Controller und Panikknopf-Treiber hinzugefügt.",
+    "es": "Control de calefacción arreglado, se añadieron controladores para el controlador de escenas y el botón de pánico.",
+    "fr": "Contrôle du chauffage corrigé, ajout des pilotes pour le contrôleur de scène et le bouton de panique.",
+    "it": "Controllo del riscaldamento risolto, aggiunti i driver per il Controller di Scene e il Pulsante di Panico.",
+    "no": "Oppvarmingskontroll fikset, la til Scene Controller og Panic Button-drivere.",
+    "sv": "Uppvärmningskontroll fixad, lade till drivrutiner för scenkontroll och panikknapp.",
+    "pl": "Naprawiono sterowanie ogrzewaniem, dodano sterowniki kontrolera scen i przycisku alarmowego.",
+    "ru": "Контроль отопления исправлен, добавлены драйверы для контроллера сцен и кнопки тревоги.",
+    "ko": "난방 제어 수정, 장면 컨트롤러 및 비상 버튼 드라이버 추가.",
+    "ar": "تم إصلاح التحكم في التدفئة، وتمت إضافة برامج تشغيل وحدة التحكم في المشاهد وزر الذعر."
   }
 }
