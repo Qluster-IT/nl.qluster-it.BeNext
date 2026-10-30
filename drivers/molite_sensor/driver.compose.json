@@ -7,7 +7,10 @@
       "zwave": {
         "manufacturerId": 138,
         "productTypeId": 3,
-        "productId": 257,
+        "productId": [
+          256,
+          257
+        ],
         "learnmode": {
           "image": "/drivers/molite_sensor/assets/learnmode.svg",
           "instruction": {
@@ -23,17 +26,17 @@
           }
         },
         "associationGroups": [
-          1,
-          2
+          1
         ]
       },
       "class": "sensor",
       "capabilities": [
         "alarm_motion",
         "alarm_tamper",
-        "measure_luminance",
+        "light_level",
         "measure_temperature",
-        "measure_battery"
+        "measure_battery",
+        "alarm_battery"
       ],
       "energy": {
       "batteries": [ "AA", "AA" ]

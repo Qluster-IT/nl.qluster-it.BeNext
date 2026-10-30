@@ -634,7 +634,10 @@
       "zwave": {
         "manufacturerId": 138,
         "productTypeId": 3,
-        "productId": 257,
+        "productId": [
+          256,
+          257
+        ],
         "learnmode": {
           "image": "/drivers/molite_sensor/assets/learnmode.svg",
           "instruction": {
@@ -650,17 +653,17 @@
           }
         },
         "associationGroups": [
-          1,
-          2
+          1
         ]
       },
       "class": "sensor",
       "capabilities": [
         "alarm_motion",
         "alarm_tamper",
-        "measure_luminance",
+        "light_level",
         "measure_temperature",
-        "measure_battery"
+        "measure_battery",
+        "alarm_battery"
       ],
       "energy": {
         "batteries": [
@@ -671,7 +674,90 @@
       "images": {
         "large": "/drivers/molite_sensor/assets/images/large.png",
         "small": "/drivers/molite_sensor/assets/images/small.png"
-      }
+      },
+      "settings": [
+        {
+          "id": "mode_timeout",
+          "type": "number",
+          "zwave": {
+            "index": 2,
+            "size": 2
+          },
+          "label": {
+            "en": "Motion pause (s)",
+            "nl": "Bewegingspauze (s)"
+          },
+          "hint": {
+            "en": "After motion is detected, the sensor stops looking for motion for this many seconds to save battery. Motion is reported as off after this time plus the switch-off time without motion. Saved the next time the sensor wakes up: remove it from the backplate and hold the tamper button for 4 seconds to wake it up.",
+            "nl": "Na een beweging kijkt de sensor dit aantal seconden niet naar beweging om batterij te sparen. Beweging gaat uit na deze tijd plus de uitschakeltijd zonder beweging. Wordt opgeslagen zodra de sensor wakker wordt: haal hem van de achterkant en houd de sabotageknop 4 seconden ingedrukt om hem wakker te maken."
+          },
+          "value": 900,
+          "attr": {
+            "min": 1,
+            "max": 32767
+          }
+        },
+        {
+          "id": "switch_off_time",
+          "type": "number",
+          "zwave": {
+            "index": 3,
+            "size": 2
+          },
+          "label": {
+            "en": "Switch-off time (s)",
+            "nl": "Uitschakeltijd (s)"
+          },
+          "hint": {
+            "en": "Seconds without motion, after the motion pause, before motion is reported as off. New motion in this time starts the motion pause again.",
+            "nl": "Seconden zonder beweging, na de bewegingspauze, voordat beweging uit gaat. Nieuwe beweging in deze tijd start de bewegingspauze opnieuw."
+          },
+          "value": 2700,
+          "attr": {
+            "min": 1,
+            "max": 32767
+          }
+        },
+        {
+          "id": "sensitivity",
+          "type": "number",
+          "zwave": {
+            "index": 4,
+            "size": 1
+          },
+          "label": {
+            "en": "Motion sensitivity",
+            "nl": "Bewegingsgevoeligheid"
+          },
+          "hint": {
+            "en": "0 is the least sensitive, 127 the most sensitive.",
+            "nl": "0 is het minst gevoelig, 127 het meest gevoelig."
+          },
+          "value": 80,
+          "attr": {
+            "min": 0,
+            "max": 127
+          }
+        },
+        {
+          "id": "temperature_offset",
+          "type": "number",
+          "label": {
+            "en": "Temperature offset (°C)",
+            "nl": "Temperatuurcorrectie (°C)"
+          },
+          "hint": {
+            "en": "Added to the measured temperature, for example -3 if the sensor reads 3 °C too high. Applies from the next temperature report (every wake-up).",
+            "nl": "Wordt opgeteld bij de gemeten temperatuur, bijvoorbeeld -3 als de sensor 3 °C te hoog meet. Geldt vanaf het volgende temperatuurrapport (elke keer dat de sensor wakker wordt)."
+          },
+          "value": 0,
+          "attr": {
+            "min": -10,
+            "max": 10,
+            "step": 0.1
+          }
+        }
+      ]
     },
     {
       "id": "p1_dongle",
@@ -1346,6 +1432,115 @@
   "flow": {
     "triggers": [
       {
+        "id": "molite_light_level_changed",
+        "title": {
+          "en": "The light level changed",
+          "nl": "Het lichtniveau is veranderd"
+        },
+        "hint": {
+          "en": "The sensor measures light in steps of 10%, every time it wakes up.",
+          "nl": "De sensor meet licht in stappen van 10%, elke keer dat hij wakker wordt."
+        },
+        "tokens": [
+          {
+            "name": "light_level",
+            "type": "number",
+            "title": {
+              "en": "Light level (%)",
+              "nl": "Lichtniveau (%)"
+            },
+            "example": 30
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=molite_sensor"
+          }
+        ]
+      },
+      {
+        "id": "molite_light_level_above",
+        "title": {
+          "en": "The light level rose above a value",
+          "nl": "Het lichtniveau is boven een waarde gestegen"
+        },
+        "titleFormatted": {
+          "en": "The light level rose above [[level]] %",
+          "nl": "Het lichtniveau is boven [[level]] % gestegen"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=molite_sensor"
+          },
+          {
+            "type": "number",
+            "name": "level",
+            "placeholder": {
+              "en": "50",
+              "nl": "50"
+            },
+            "min": 0,
+            "max": 100,
+            "step": 10
+          }
+        ],
+        "tokens": [
+          {
+            "name": "light_level",
+            "type": "number",
+            "title": {
+              "en": "Light level (%)",
+              "nl": "Lichtniveau (%)"
+            },
+            "example": 60
+          }
+        ]
+      },
+      {
+        "id": "molite_light_level_below",
+        "title": {
+          "en": "The light level dropped below a value",
+          "nl": "Het lichtniveau is onder een waarde gezakt"
+        },
+        "titleFormatted": {
+          "en": "The light level dropped below [[level]] %",
+          "nl": "Het lichtniveau is onder [[level]] % gezakt"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=molite_sensor"
+          },
+          {
+            "type": "number",
+            "name": "level",
+            "placeholder": {
+              "en": "30",
+              "nl": "30"
+            },
+            "min": 0,
+            "max": 100,
+            "step": 10
+          }
+        ],
+        "tokens": [
+          {
+            "name": "light_level",
+            "type": "number",
+            "title": {
+              "en": "Light level (%)",
+              "nl": "Lichtniveau (%)"
+            },
+            "example": 20
+          }
+        ]
+      },
+      {
         "id": "panic_button_sos_held",
         "title": {
           "en": "SOS button is held (2 seconds)",
@@ -1786,6 +1981,35 @@
     ],
     "conditions": [
       {
+        "id": "molite_light_level_is_above",
+        "title": {
+          "en": "The light level is !{{above|not above}} a value",
+          "nl": "Het lichtniveau is !{{boven|niet boven}} een waarde"
+        },
+        "titleFormatted": {
+          "en": "The light level is !{{above|not above}} [[level]] %",
+          "nl": "Het lichtniveau is !{{boven|niet boven}} [[level]] %"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=molite_sensor"
+          },
+          {
+            "type": "number",
+            "name": "level",
+            "placeholder": {
+              "en": "50",
+              "nl": "50"
+            },
+            "min": 0,
+            "max": 100,
+            "step": 10
+          }
+        ]
+      },
+      {
         "id": "tagReader-is_at_home",
         "title": {
           "en": "Is !{{|not}} at home",
@@ -1900,6 +2124,24 @@
       "min": 0,
       "max": 100,
       "step": 1
+    },
+    "light_level": {
+      "type": "number",
+      "title": {
+        "en": "Light level",
+        "nl": "Lichtniveau"
+      },
+      "units": {
+        "en": "%"
+      },
+      "decimals": 0,
+      "min": 0,
+      "max": 100,
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true,
+      "icon": "/assets/capabilities/light_level.svg"
     },
     "my_gateway_control": {
       "type": "number",

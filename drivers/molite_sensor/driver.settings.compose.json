@@ -1,0 +1,83 @@
+[
+  {
+    "id": "mode_timeout",
+    "type": "number",
+    "zwave": {
+      "index": 2,
+      "size": 2
+    },
+    "label": {
+      "en": "Motion pause (s)",
+      "nl": "Bewegingspauze (s)"
+    },
+    "hint": {
+      "en": "After motion is detected, the sensor stops looking for motion for this many seconds to save battery. Motion is reported as off after this time plus the switch-off time without motion. Saved the next time the sensor wakes up: remove it from the backplate and hold the tamper button for 4 seconds to wake it up.",
+      "nl": "Na een beweging kijkt de sensor dit aantal seconden niet naar beweging om batterij te sparen. Beweging gaat uit na deze tijd plus de uitschakeltijd zonder beweging. Wordt opgeslagen zodra de sensor wakker wordt: haal hem van de achterkant en houd de sabotageknop 4 seconden ingedrukt om hem wakker te maken."
+    },
+    "value": 900,
+    "attr": {
+      "min": 1,
+      "max": 32767
+    }
+  },
+  {
+    "id": "switch_off_time",
+    "type": "number",
+    "zwave": {
+      "index": 3,
+      "size": 2
+    },
+    "label": {
+      "en": "Switch-off time (s)",
+      "nl": "Uitschakeltijd (s)"
+    },
+    "hint": {
+      "en": "Seconds without motion, after the motion pause, before motion is reported as off. New motion in this time starts the motion pause again.",
+      "nl": "Seconden zonder beweging, na de bewegingspauze, voordat beweging uit gaat. Nieuwe beweging in deze tijd start de bewegingspauze opnieuw."
+    },
+    "value": 2700,
+    "attr": {
+      "min": 1,
+      "max": 32767
+    }
+  },
+  {
+    "id": "sensitivity",
+    "type": "number",
+    "zwave": {
+      "index": 4,
+      "size": 1
+    },
+    "label": {
+      "en": "Motion sensitivity",
+      "nl": "Bewegingsgevoeligheid"
+    },
+    "hint": {
+      "en": "0 is the least sensitive, 127 the most sensitive.",
+      "nl": "0 is het minst gevoelig, 127 het meest gevoelig."
+    },
+    "value": 80,
+    "attr": {
+      "min": 0,
+      "max": 127
+    }
+  },
+  {
+    "id": "temperature_offset",
+    "type": "number",
+    "label": {
+      "en": "Temperature offset (°C)",
+      "nl": "Temperatuurcorrectie (°C)"
+    },
+    "hint": {
+      "en": "Added to the measured temperature, for example -3 if the sensor reads 3 °C too high. Applies from the next temperature report (every wake-up).",
+      "nl": "Wordt opgeteld bij de gemeten temperatuur, bijvoorbeeld -3 als de sensor 3 °C te hoog meet. Geldt vanaf het volgende temperatuurrapport (elke keer dat de sensor wakker wordt)."
+    },
+    "value": 0,
+    "attr": {
+      "min": -10,
+      "max": 10,
+      "step": 0.1
+    }
+  }
+]
