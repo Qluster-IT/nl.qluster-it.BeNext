@@ -3,8 +3,12 @@
     {
       "id": "panic_button_sos_held",
       "title": {
-        "en": "SOS button is held (2 seconds)",
-        "nl": "SOS knop is ingedrukt gehouden (2 seconden)"
+        "en": "SOS button is long pressed",
+        "nl": "SOS knop is lang ingedrukt"
+      },
+      "hint": {
+        "en": "The SOS button is held for about 2 seconds.",
+        "nl": "De SOS knop wordt ongeveer 2 seconden ingedrukt gehouden."
       }
     },
     {
