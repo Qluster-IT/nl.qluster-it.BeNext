@@ -25,8 +25,8 @@ class DoorSensorDevice extends ZwaveDevice {
 		
 		this.registerCapability('alarm_contact', 'BASIC');
 		this.registerCapability('alarm_contact', 'SENSOR_BINARY');
-		// External contact (screw connector), e.g. a doorbell button; true while the contact is open
-		this.externalContactOpen = this.getCapabilityValue('alarm_generic');
+		// External contact (screw connector), e.g. a doorbell button; the alarm follows the external contact setting
+		this.externalContactOpen = await this._loadExternalContact();
 		this.doorbellPressedTrigger = this.homey.flow.getDeviceTriggerCard('window_door_sensor_doorbell_pressed');
 		this.doorbellReleasedTrigger = this.homey.flow.getDeviceTriggerCard('window_door_sensor_doorbell_released');
 		this.registerCapability('alarm_generic', 'ALARM', {
@@ -42,7 +42,7 @@ class DoorSensorDevice extends ZwaveDevice {
 					report.hasOwnProperty('Alarm Level')) {
 					const open = report['Alarm Level'] === 255;
 					this._onExternalContact(open);
-					return open;
+					return this._isExternalContactTriggered(open);
 				}
 				return null;
 			}
@@ -80,16 +80,39 @@ class DoorSensorDevice extends ZwaveDevice {
 	}
 
 
+	// A doorbell button is normally open: pressing it closes the contact
+	_isExternalContactTriggered(open, contactType = this.getSetting('external_contact_type')) {
+		return contactType === 'normally_closed' ? open : !open;
+	}
+
+	async _loadExternalContact() {
+		const stored = this.getStoreValue('externalContactOpen');
+		if (typeof stored === 'boolean') return stored;
+
+		// Before this value was stored, the capability held whether the contact was open
+		const capability = this.getCapabilityValue('alarm_generic');
+		const open = typeof capability === 'boolean' ? capability : !this._isExternalContactTriggered(true);
+		await this.setStoreValue('externalContactOpen', open);
+		await this.setCapabilityValue('alarm_generic', this._isExternalContactTriggered(open));
+		return open;
+	}
+
+	async onSettings({ oldSettings, newSettings, changedKeys }) {
+		if (changedKeys.includes('external_contact_type')) {
+			await this.setCapabilityValue('alarm_generic', this._isExternalContactTriggered(this.externalContactOpen, newSettings.external_contact_type));
+		}
+		return super.onSettings({ oldSettings, newSettings, changedKeys });
+	}
+
 	_onExternalContact(open) {
 		const previous = this.externalContactOpen;
 		const now = Date.now();
 		const sinceLastReport = now - (this.lastExternalReport || 0);
 		this.externalContactOpen = open;
 		this.lastExternalReport = now;
+		this.setStoreValue('externalContactOpen', open).catch(err => this.error(err));
 
-		// A doorbell button is normally open: pressing it closes the contact
-		const normallyClosed = this.getSetting('external_contact_type') === 'normally_closed';
-		const pressed = normallyClosed ? open : !open;
+		const pressed = this._isExternalContactTriggered(open);
 
 		// The sensor wakes too late to report a short press, so only the release arrives
 		const missedPress = previous === open && !pressed && sinceLastReport >= DOORBELL_DEBOUNCE;
