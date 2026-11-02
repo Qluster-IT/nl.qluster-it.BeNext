@@ -15,8 +15,6 @@ const ZwaveDevice = require('homey-zwavedriver').ZwaveDevice;
 class MoliteSensorDevice extends ZwaveDevice {
 
 	async onNodeInit() {
-		// The sensor sends a battery low warning below 20%; measure_battery sets alarm_battery
-		if (!this.hasCapability('alarm_battery')) await this.addCapability('alarm_battery');
 		// Light is a percentage, not lux: devices paired before light_level still have measure_luminance
 		if (this.hasCapability('measure_luminance')) await this.removeCapability('measure_luminance');
 		if (!this.hasCapability('light_level')) await this.addCapability('light_level');
