@@ -1,0 +1,26 @@
+{
+  "triggers": [
+    {
+      "id": "window_door_sensor_doorbell_pressed",
+      "title": {
+        "en": "Doorbell is pressed",
+        "nl": "Deurbel is ingedrukt"
+      },
+      "hint": {
+        "en": "The button on the external contact (screw connector) is pressed.",
+        "nl": "De knop op het externe contact (schroefaansluiting) is ingedrukt."
+      }
+    },
+    {
+      "id": "window_door_sensor_doorbell_released",
+      "title": {
+        "en": "Doorbell is released",
+        "nl": "Deurbel is losgelaten"
+      },
+      "hint": {
+        "en": "The button on the external contact (screw connector) is released.",
+        "nl": "De knop op het externe contact (schroefaansluiting) is losgelaten."
+      }
+    }
+  ]
+}
