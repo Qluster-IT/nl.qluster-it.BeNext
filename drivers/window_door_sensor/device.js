@@ -9,6 +9,9 @@ const ZwaveDevice = require('homey-zwavedriver').ZwaveDevice;
 // Contact changes within this time after a press belong to the same press (ms)
 const DOORBELL_DEBOUNCE = 1000;
 
+// "Released" waits this long after a press, so a short press still gives a flow time to play a chime (ms)
+const DOORBELL_MIN_PRESS = 3000;
+
 const CONTROLLER_NODE_ID = 1;
 
 
@@ -23,6 +26,7 @@ class DoorSensorDevice extends ZwaveDevice {
 		this.registerCapability('alarm_contact', 'BASIC');
 		this.registerCapability('alarm_contact', 'SENSOR_BINARY');
 		// External contact (screw connector), e.g. a doorbell button; true while the contact is open
+		this.externalContactOpen = this.getCapabilityValue('alarm_generic');
 		this.doorbellPressedTrigger = this.homey.flow.getDeviceTriggerCard('window_door_sensor_doorbell_pressed');
 		this.doorbellReleasedTrigger = this.homey.flow.getDeviceTriggerCard('window_door_sensor_doorbell_released');
 		this.registerCapability('alarm_generic', 'ALARM', {
@@ -75,27 +79,36 @@ class DoorSensorDevice extends ZwaveDevice {
 		await this.setStoreValue('associationsSet', true);
 	}
 
-	// Runs before the new value is stored, so the capability still holds the previous state
+
 	_onExternalContact(open) {
-		if (this.getCapabilityValue('alarm_generic') === open) return;
+		const previous = this.externalContactOpen;
+		const now = Date.now();
+		const sinceLastReport = now - (this.lastExternalReport || 0);
+		this.externalContactOpen = open;
+		this.lastExternalReport = now;
 
 		// A doorbell button is normally open: pressing it closes the contact
 		const normallyClosed = this.getSetting('external_contact_type') === 'normally_closed';
 		const pressed = normallyClosed ? open : !open;
 
-		// A worn contact bounces: several changes within a fraction of a second count as one press
-		const now = Date.now();
-		if (pressed) {
+		// The sensor wakes too late to report a short press, so only the release arrives
+		const missedPress = previous === open && !pressed && sinceLastReport >= DOORBELL_DEBOUNCE;
+		if (previous === open && !missedPress) return;
+
+		if (pressed || missedPress) {
+			// A worn contact bounces: several changes within a fraction of a second count as one press
 			if (now - (this.lastDoorbellPress || 0) < DOORBELL_DEBOUNCE) return;
 			this.lastDoorbellPress = now;
 			this.doorbellPressedTrigger.trigger(this, {}, {}).catch(err => this.error(err));
-			return;
+			if (pressed) return;
 		}
+
+		const pressTime = now - this.lastDoorbellPress;
 		clearTimeout(this.releaseTimer);
 		this.releaseTimer = this.homey.setTimeout(() => {
-			if (this.getCapabilityValue('alarm_generic') !== open) return;
+			if (this.externalContactOpen !== open) return;
 			this.doorbellReleasedTrigger.trigger(this, {}, {}).catch(err => this.error(err));
-		}, DOORBELL_DEBOUNCE);
+		}, Math.max(DOORBELL_DEBOUNCE, DOORBELL_MIN_PRESS - pressTime));
 	}
 
 }
