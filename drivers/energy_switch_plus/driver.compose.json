@@ -33,6 +33,14 @@
         "measure_power",
         "meter_power"
       ],
+      "capabilitiesOptions": {
+        "meter_power.export": {
+          "title": {
+            "en": "Returned energy",
+            "nl": "Teruggeleverde energie"
+          }
+        }
+      },
       "images": {
         "large": "/drivers/energy_switch_plus/assets/images/large.png",
         "small": "/drivers/energy_switch_plus/assets/images/small.png"

@@ -1,78 +1,223 @@
 [
-        {
-          "id": "meter_report_percentage",
-          "zwave": {
-            "index": 11,
-            "size": 1
-          },
-          "type": "number",
-          "label": {
-            "en": "Wattage report threshold (%)",
-            "nl": "Wattage verzending drempel (%)"
-          },
-          "hint": {
-            "en": "How much must the Wattage change (in percentage) before the value is being send. Range: 1 - 100",
-            "nl": "Hoeveel moet de Wattage zijn veranderd (in percentage) voor de waarde wordt verzonden. Bereik: 1 - 100"
-          },
-          "attr": {
-            "min": 1,
-            "max": 100
-          },
-          "value": 20
-        },
-        {
-          "id": "meter_report_watt",
-          "zwave": {
-            "index": 12,
-            "size": 1,
-			"signed": false
-          },
-          "type": "number",
-          "label": {
-            "en": "Wattage report threshold (W)",
-            "nl": "Wattage verzending drempel (W)"
-          },
-          "hint": {
-            "en": "How much must the Wattage change (in Watt) before the value is being send. Range: 5 - 255",
-            "nl": "Hoeveel moet de Wattage zijn veranderd (in Watt) voor de waarde wordt verzonden. Bereik: 5 - 255"
-          },
-          "attr": {
-            "min": 5,
-            "max": 255
-          },
-          "value": 5
-        },
-        {
-          "id": "save_state",
-          "zwave": {
-            "index": 14,
-            "size": 1
-          },
-          "type": "dropdown",
-          "label": {
-            "en": "Save power-off state",
-            "nl": "Onthoud status na stroomonderbreking"
-          },
-          "hint": {
-            "en": "State after power disruption.",
-            "nl": "Status na stroomonderbreking"
-          },
-          "value": "0",
-          "values": [
-            {
-              "id": "0",
-              "label": {
-                "en": "Always off",
-                "nl": "Altijd uit"
-              }
-            },
-            {
-              "id": "1",
-              "label": {
-                "en": "Restore previous state",
-                "nl": "Herstel vorige status"
-              }
-            }
-          ]
+  {
+    "id": "button_type",
+    "zwave": {
+      "index": 2,
+      "size": 1
+    },
+    "type": "dropdown",
+    "label": {
+      "en": "Wall switch type",
+      "nl": "Type muurschakelaar"
+    },
+    "hint": {
+      "en": "How the dimmer reacts to the wall switch.",
+      "nl": "Hoe de dimmer reageert op de muurschakelaar."
+    },
+    "value": "2",
+    "values": [
+      {
+        "id": "0",
+        "label": {
+          "en": "Push button: toggle on press",
+          "nl": "Drukknop: schakelen bij indrukken"
         }
-		]
+      },
+      {
+        "id": "1",
+        "label": {
+          "en": "Push button: toggle on press, dim while held",
+          "nl": "Drukknop: schakelen bij indrukken, dimmen bij vasthouden"
+        }
+      },
+      {
+        "id": "2",
+        "label": {
+          "en": "Toggle switch: every flip switches, flip twice quickly to dim",
+          "nl": "Wisselschakelaar: elke klik schakelt, twee keer snel klikken om te dimmen"
+        }
+      }
+    ]
+  },
+  {
+    "id": "dimming_enabled",
+    "zwave": {
+      "index": 4,
+      "size": 1
+    },
+    "type": "checkbox",
+    "label": {
+      "en": "Dimming",
+      "nl": "Dimmen"
+    },
+    "hint": {
+      "en": "When off, the light only switches on and off, without dimming or fading.",
+      "nl": "Wanneer uit schakelt het licht alleen aan en uit, zonder dimmen of faden."
+    },
+    "value": true
+  },
+  {
+    "id": "dim_speed",
+    "zwave": {
+      "index": 7,
+      "size": 1,
+      "signed": false
+    },
+    "type": "number",
+    "label": {
+      "en": "Dim speed",
+      "nl": "Dimsnelheid"
+    },
+    "hint": {
+      "en": "Time per 1 % step when dimming, in steps of 10 ms. 3 = 30 ms per step, about 3 s from off to full. Range: 1 - 255",
+      "nl": "Tijd per stap van 1 % bij dimmen, in stappen van 10 ms. 3 = 30 ms per stap, ongeveer 3 s van uit tot vol. Bereik: 1 - 255"
+    },
+    "attr": {
+      "min": 1,
+      "max": 255
+    },
+    "value": 3
+  },
+  {
+    "id": "fade_up_speed",
+    "zwave": {
+      "index": 8,
+      "size": 1,
+      "signed": false
+    },
+    "type": "number",
+    "label": {
+      "en": "Fade-on speed",
+      "nl": "Snelheid aan faden"
+    },
+    "hint": {
+      "en": "Time per 1 % step when switching on, in steps of 10 ms. 1 = 10 ms per step, about 1 s from off to full. Range: 1 - 255",
+      "nl": "Tijd per stap van 1 % bij aanzetten, in stappen van 10 ms. 1 = 10 ms per stap, ongeveer 1 s van uit tot vol. Bereik: 1 - 255"
+    },
+    "attr": {
+      "min": 1,
+      "max": 255
+    },
+    "value": 1
+  },
+  {
+    "id": "fade_down_speed",
+    "zwave": {
+      "index": 15,
+      "size": 1,
+      "signed": false
+    },
+    "type": "number",
+    "label": {
+      "en": "Fade-off speed",
+      "nl": "Snelheid uit faden"
+    },
+    "hint": {
+      "en": "Time per 1 % step when switching off, in steps of 10 ms. 1 = 10 ms per step, about 1 s from off to full. Range: 1 - 255",
+      "nl": "Tijd per stap van 1 % bij uitzetten, in stappen van 10 ms. 1 = 10 ms per stap, ongeveer 1 s van uit tot vol. Bereik: 1 - 255"
+    },
+    "attr": {
+      "min": 1,
+      "max": 255
+    },
+    "value": 1
+  },
+  {
+    "id": "meter_report_percentage",
+    "zwave": {
+      "index": 11,
+      "size": 1
+    },
+    "type": "number",
+    "label": {
+      "en": "Wattage report threshold (%)",
+      "nl": "Wattage verzending drempel (%)"
+    },
+    "hint": {
+      "en": "How much must the Wattage change (in percentage) before the value is being send. Range: 10 - 100",
+      "nl": "Hoeveel moet de Wattage zijn veranderd (in percentage) voor de waarde wordt verzonden. Bereik: 10 - 100"
+    },
+    "attr": {
+      "min": 10,
+      "max": 100
+    },
+    "value": 20
+  },
+  {
+    "id": "meter_report_watt",
+    "zwave": {
+      "index": 12,
+      "size": 1,
+      "signed": false
+    },
+    "type": "number",
+    "label": {
+      "en": "Wattage report threshold (W)",
+      "nl": "Wattage verzending drempel (W)"
+    },
+    "hint": {
+      "en": "How much must the Wattage change (in Watt) before the value is being send. Range: 5 - 255",
+      "nl": "Hoeveel moet de Wattage zijn veranderd (in Watt) voor de waarde wordt verzonden. Bereik: 5 - 255"
+    },
+    "attr": {
+      "min": 5,
+      "max": 255
+    },
+    "value": 10
+  },
+  {
+    "id": "meter_report_time",
+    "zwave": {
+      "index": 13,
+      "size": 1,
+      "signed": false
+    },
+    "type": "number",
+    "label": {
+      "en": "Wattage report interval (s)",
+      "nl": "Wattage verzending interval (s)"
+    },
+    "hint": {
+      "en": "Minimum time between two automatic wattage reports, in seconds. Range: 10 - 255",
+      "nl": "Minimale tijd tussen twee automatische wattage rapporten, in seconden. Bereik: 10 - 255"
+    },
+    "attr": {
+      "min": 10,
+      "max": 255
+    },
+    "value": 10
+  },
+  {
+    "id": "save_state",
+    "zwave": {
+      "index": 14,
+      "size": 1
+    },
+    "type": "dropdown",
+    "label": {
+      "en": "Save power-off state",
+      "nl": "Onthoud status na stroomonderbreking"
+    },
+    "hint": {
+      "en": "State after power disruption.",
+      "nl": "Status na stroomonderbreking"
+    },
+    "value": "0",
+    "values": [
+      {
+        "id": "0",
+        "label": {
+          "en": "Always off",
+          "nl": "Altijd uit"
+        }
+      },
+      {
+        "id": "1",
+        "label": {
+          "en": "Restore previous state",
+          "nl": "Herstel vorige status"
+        }
+      }
+    ]
+  }
+]
