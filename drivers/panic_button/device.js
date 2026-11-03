@@ -44,11 +44,11 @@ class PanicButtonDevice extends ZwaveDevice {
 		this.lastPressTimes = {};
 
 		for (const commandClass of Object.values(this.node.CommandClass)) {
-			commandClass.on('report', (command, report) => this._onReport(command, report));
+			commandClass.on('report', (command, report) => this._onButtonReport(command, report));
 		}
 	}
 
-	_onReport(command, report) {
+	_onButtonReport(command, report) {
 		const button = command && BUTTONS[command.name];
 		if (!button) return;
 
