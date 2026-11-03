@@ -9,6 +9,13 @@ const ZwaveDevice = require('homey-zwavedriver').ZwaveDevice;
 // Contact changes within this time after a press belong to the same press (ms)
 const DOORBELL_DEBOUNCE = 1000;
 
+// A repeated report within this time is the sensor retrying, not another press (ms)
+const DOORBELL_REPEAT_WINDOW = 3000;
+
+// A report this long after the last one belongs to a new press: the release in between got lost.
+// This only affects the doorbell flow cards, the alarm always shows the reported state (ms)
+const DOORBELL_LOST_RELEASE = 15000;
+
 // "Released" waits this long after a press, so a short press still gives a flow time to play a chime (ms)
 const DOORBELL_MIN_PRESS = 3000;
 
@@ -24,7 +31,10 @@ class DoorSensorDevice extends ZwaveDevice {
 		//this.printNode();
 		
 		this.registerCapability('alarm_contact', 'BASIC');
-		this.registerCapability('alarm_contact', 'SENSOR_BINARY');
+		// Asked at every wake-up, so a lost report can't leave the alarm in the wrong state
+		this.registerCapability('alarm_contact', 'SENSOR_BINARY', {
+			getOpts: { getOnOnline: true },
+		});
 		// External contact (screw connector), e.g. a doorbell button; the alarm follows the external contact setting
 		this.externalContactOpen = await this._loadExternalContact();
 		this.doorbellPressedTrigger = this.homey.flow.getDeviceTriggerCard('window_door_sensor_doorbell_pressed');
@@ -52,6 +62,7 @@ class DoorSensorDevice extends ZwaveDevice {
 			getParser: () => ({
 				'Alarm Type': 3,
 			}),
+			getOpts: { getOnOnline: true },
 			report: 'ALARM_REPORT',
 			reportParser: report => {
 				if (report &&
@@ -63,7 +74,9 @@ class DoorSensorDevice extends ZwaveDevice {
 				return null;
 			}
 		});
-		this.registerCapability('measure_temperature', 'SENSOR_MULTILEVEL');
+		this.registerCapability('measure_temperature', 'SENSOR_MULTILEVEL', {
+			getOpts: { getOnOnline: true, getOnStart: false },
+		});
 		this.registerCapability('measure_battery', 'BATTERY');
 
 		// Without associations the sensor has nowhere to send its reports; delivered at the next wake-up
@@ -114,9 +127,11 @@ class DoorSensorDevice extends ZwaveDevice {
 
 		const pressed = this._isExternalContactTriggered(open);
 
-		// The sensor wakes too late to report a short press, so only the release arrives
-		const missedPress = previous === open && !pressed && sinceLastReport >= DOORBELL_DEBOUNCE;
-		if (previous === open && !missedPress) return;
+		// The report of a short press often doesn't arrive, only the release does
+		const lostRelease = sinceLastReport >= DOORBELL_LOST_RELEASE;
+		const repeated = previous === open;
+		const missedPress = !pressed && (repeated ? sinceLastReport >= DOORBELL_REPEAT_WINDOW : lostRelease);
+		if (repeated && !missedPress && !(pressed && lostRelease)) return;
 
 		if (pressed || missedPress) {
 			// A worn contact bounces: several changes within a fraction of a second count as one press
@@ -126,7 +141,7 @@ class DoorSensorDevice extends ZwaveDevice {
 			if (pressed) return;
 		}
 
-		const pressTime = now - this.lastDoorbellPress;
+		const pressTime = now - (this.lastDoorbellPress || 0);
 		clearTimeout(this.releaseTimer);
 		this.releaseTimer = this.homey.setTimeout(() => {
 			if (this.externalContactOpen !== open) return;
