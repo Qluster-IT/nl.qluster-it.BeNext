@@ -5,16 +5,16 @@
   },
   "brandColor": "#a6ce3f",
   "sdk": 3,
-  "version": "1.4.0",
+  "version": "1.5.0",
   "compatibility": ">=5.0.0",
   "description": {
     "en": "BeNext devices for Homey",
     "nl": "BeNext apparaten voor Homey"
   },
   "category": [
+    "appliances",
     "security",
     "lights",
-    "appliances",
     "climate",
     "energy"
   ],
@@ -64,5 +64,8 @@
         "email": "homey@wisefire.nl"
       }
     ]
-  }
+  },
+  "platforms": [
+    "local"
+  ]
 }

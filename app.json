@@ -6,16 +6,16 @@
   },
   "brandColor": "#a6ce3f",
   "sdk": 3,
-  "version": "1.4.0",
+  "version": "1.5.0",
   "compatibility": ">=5.0.0",
   "description": {
     "en": "BeNext devices for Homey",
     "nl": "BeNext apparaten voor Homey"
   },
   "category": [
+    "appliances",
     "security",
     "lights",
-    "appliances",
     "climate",
     "energy"
   ],
@@ -66,6 +66,9 @@
       }
     ]
   },
+  "platforms": [
+    "local"
+  ],
   "drivers": [
     {
       "id": "alarm_sound",
@@ -2153,6 +2156,7 @@
           },
           {
             "name": "userName",
+            "type": "string",
             "title": {
               "en": "Username",
               "nl": "Gebruikersnaam"
@@ -2202,6 +2206,7 @@
           },
           {
             "name": "userName",
+            "type": "string",
             "title": {
               "en": "Username",
               "nl": "Gebruikersnaam"
@@ -2251,6 +2256,7 @@
           },
           {
             "name": "userName",
+            "type": "string",
             "title": {
               "en": "Username",
               "nl": "Gebruikersnaam"
@@ -2271,6 +2277,7 @@
           },
           {
             "name": "deviceId",
+            "type": "string",
             "title": {
               "en": "Keypad ID",
               "nl": "Keypad ID"
@@ -2311,6 +2318,7 @@
           },
           {
             "name": "userName",
+            "type": "string",
             "title": {
               "en": "Username",
               "nl": "Gebruikersnaam"
@@ -2331,6 +2339,7 @@
           },
           {
             "name": "deviceId",
+            "type": "string",
             "title": {
               "en": "RFID keypad ID",
               "nl": "RFID keypad ID"
@@ -2419,8 +2428,12 @@
       {
         "id": "tagReader-is_at_home",
         "title": {
-          "en": "Is !{{|not}} at home",
+          "en": "Is !{{|not}} home",
           "nl": "Is !{{|niet}} thuis"
+        },
+        "titleFormatted": {
+          "en": "[[person]] is !{{|not}} home",
+          "nl": "[[person]] is !{{|niet}} thuis"
         },
         "hint": {
           "en": "Select a person to check if this person is home or away.",
@@ -2465,7 +2478,11 @@
         "id": "tagReader-toggle_person_away",
         "title": {
           "en": "Mark as away",
-          "nl": "Is afwezig"
+          "nl": "Zet als afwezig"
+        },
+        "titleFormatted": {
+          "en": "Mark [[person]] as away",
+          "nl": "Zet [[person]] als afwezig"
         },
         "hint": {
           "en": "Select a person to set the status of the person to away.",
@@ -2490,8 +2507,12 @@
       {
         "id": "tagReader-toggle_person_home",
         "title": {
-          "en": "Mark as home",
-          "nl": "Is thuis"
+          "en": "Mark as homey",
+          "nl": "Zet als thuis"
+        },
+        "titleFormatted": {
+          "en": "Mark [[person]] as home",
+          "nl": "Zet [[person]] als thuis"
         },
         "hint": {
           "en": "Select a person to set the status of the person to home.",

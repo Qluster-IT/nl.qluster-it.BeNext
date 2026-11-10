@@ -163,5 +163,20 @@
     "ru": "Контроль отопления исправлен, добавлены драйверы для контроллера сцен и кнопки тревоги.",
     "ko": "난방 제어 수정, 장면 컨트롤러 및 비상 버튼 드라이버 추가.",
     "ar": "تم إصلاح التحكم في التدفئة، وتمت إضافة برامج تشغيل وحدة التحكم في المشاهد وزر الذعر."
+  },
+  "1.5.0": {
+    "en": "New images.\nBuilt-in Dimmer wall switch fix, Energy Switch returned energy and settings.\nWindow/Door Sensor doorbell and battery fix, Panic Button improvements.\nMoLiTe Sensor: fix motion and light, add settings.",
+    "nl": "Nieuwe afbeeldingen.  \nIngebouwde Dimmer wandschakelaar reparatie, Energy Switch teruggeleverde energie en instellingen.  \nRaam/Deur Sensor deurbel en batterij reparatie, Panic Button verbeteringen.  \nMoLiTe Sensor: reparatie beweging en licht, instellingen toegevoegd.",
+    "da": "Nye billeder.\nIndbygget dæmper vægkontakt fix, Energy Switch returneret energi og indstillinger.\nVindue/Dør Sensor dørklokke og batteri fix, forbedringer af Panikknap.\nMoLiTe Sensor: fix bevægelse og lys, tilføj indstillinger.",
+    "de": "Neue Bilder.  \nEingebauter Dimmer-Wandschalter-Fix, Energy Switch Rückgabe von Energie und Einstellungen.  \nFenster-/Türsensor Türklingel- und Batterie-Fix, Verbesserungen des Panikknopfs.  \nMoLiTe Sensor: Behebung von Bewegungs- und Lichtproblemen, Hinzufügen von Einstellungen.",
+    "es": "Nuevas imágenes. \nArreglo del interruptor de pared con regulador de intensidad incorporado, el interruptor de energía devolvió la energía y configuraciones. \nSensor de Ventana/Puerta: arreglo del timbre y batería, mejoras en el Botón de Pánico. \nSensor MoLiTe: arreglo de movimiento y luz, añadir configuraciones.",
+    "fr": "Nouvelles images.  \nCorrection de l'interrupteur mural avec variateur intégré, retour de l'énergie et des réglages pour l'Energy Switch.  \nCorrection de la sonnette et de la batterie du capteur de fenêtre/porte, améliorations du bouton Panique.  \nCapteur MoLiTe : correction du mouvement et de la lumière, ajout de réglages.",
+    "it": "Nuove immagini.  \nCorrezione dell'interruttore a muro con dimmer integrato, ripristino dell'energia e delle impostazioni dell'Energy Switch.  \nSensore Finestra/Porta: correzione del campanello e della batteria, miglioramenti al Pulsante di Panico.  \nSensore MoLiTe: correzione del movimento e della luce, aggiunta delle impostazioni.",
+    "no": "Nye bilder.\nInnebygd Dimmer veggbryter fiks, Energy Switch returnert energi og innstillinger.\nVindu/Dør Sensor ringeklokke og batteri fiks, Panic Button forbedringer.\nMoLiTe Sensor: fiks bevegelse og lys, legg til innstillinger.",
+    "sv": "Nya bilder.\nInbyggd dimmer väggströmbrytare fix, Energy Switch återställd energi och inställningar.\nFönster/Dörrsensor dörrklocka och batterifix, förbättringar av Panikknappen.\nMoLiTe Sensor: fix för rörelse och ljus, lägg till inställningar.",
+    "pl": "Nowe obrazy. \nNaprawa wbudowanego ściemniacza w przełączniku ściennym, zwrócona energia i ustawienia w Energy Switch. \nNaprawa dzwonka i baterii w czujniku okna/drzwi, ulepszenia przycisku alarmowego. \nCzujnik MoLiTe: naprawa ruchu i światła, dodanie ustawień.",
+    "ru": "Новые изображения.\nИсправление встроенного настенного диммера, возврат энергии и настроек Energy Switch.\nИсправление дверного звонка и батареи датчика окна/двери, улучшения кнопки паники.\nДатчик MoLiTe: исправление движения и света, добавление настроек.",
+    "ko": "새로운 이미지.  \n내장형 디머 벽 스위치 수정, 에너지 스위치 반환 에너지 및 설정.  \n창문/문 센서 초인종 및 배터리 수정, 패닉 버튼 개선.  \nMoLiTe 센서: 움직임 및 조명 수정, 설정 추가.",
+    "ar": "صور جديدة.  \nإصلاح مفتاح الحائط المدمج مع خافض الإضاءة، عودة الطاقة والإعدادات لمفتاح الطاقة.  \nإصلاح جرس الباب والبطارية لمستشعر النافذة/الباب، تحسينات زر الذعر.  \nمستشعر MoLiTe: إصلاح الحركة والضوء، إضافة إعدادات."
   }
 }
