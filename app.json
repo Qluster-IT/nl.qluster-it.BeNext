@@ -1608,9 +1608,16 @@
         "alarm_generic",
         "alarm_tamper",
         "measure_temperature",
-        "measure_battery",
-        "alarm_battery"
+        "measure_battery"
       ],
+      "capabilitiesOptions": {
+        "alarm_generic": {
+          "title": {
+            "en": "External contact",
+            "nl": "Extern contact"
+          }
+        }
+      },
       "energy": {
         "batteries": [
           "AAA",
@@ -1620,7 +1627,88 @@
       "images": {
         "large": "/drivers/window_door_sensor/assets/images/large.png",
         "small": "/drivers/window_door_sensor/assets/images/small.png"
-      }
+      },
+      "settings": [
+        {
+          "id": "external_contact_type",
+          "type": "dropdown",
+          "label": {
+            "en": "External contact",
+            "nl": "Extern contact"
+          },
+          "hint": {
+            "en": "Normally open: the contact closes when pressed, like a doorbell button. Normally closed: the contact opens when triggered.",
+            "nl": "Normaal open: het contact sluit bij indrukken, zoals een deurbelknop. Normaal gesloten: het contact opent bij activeren."
+          },
+          "value": "normally_open",
+          "values": [
+            {
+              "id": "normally_open",
+              "label": {
+                "en": "Normally open (doorbell)",
+                "nl": "Normaal open (deurbel)"
+              }
+            },
+            {
+              "id": "normally_closed",
+              "label": {
+                "en": "Normally closed",
+                "nl": "Normaal gesloten"
+              }
+            }
+          ]
+        },
+        {
+          "id": "external_debounce_on",
+          "type": "number",
+          "zwave": {
+            "index": 7,
+            "size": 1,
+            "signed": false
+          },
+          "label": {
+            "en": "External contact delay when opened",
+            "nl": "Vertraging extern contact bij openen"
+          },
+          "hint": {
+            "en": "Seconds the external contact must stay open before it is reported, e.g. for a bed sensor. Saved the next time the sensor wakes up.",
+            "nl": "Seconden dat het externe contact open moet blijven voordat het gemeld wordt, bijvoorbeeld voor een bedsensor. Wordt opgeslagen zodra de sensor wakker wordt."
+          },
+          "value": 0,
+          "units": {
+            "en": "s"
+          },
+          "attr": {
+            "min": 0,
+            "max": 255
+          }
+        },
+        {
+          "id": "external_debounce_off",
+          "type": "number",
+          "zwave": {
+            "index": 8,
+            "size": 1,
+            "signed": false
+          },
+          "label": {
+            "en": "External contact delay when closed",
+            "nl": "Vertraging extern contact bij sluiten"
+          },
+          "hint": {
+            "en": "Seconds the external contact must stay closed before it is reported. Saved the next time the sensor wakes up.",
+            "nl": "Seconden dat het externe contact gesloten moet blijven voordat het gemeld wordt. Wordt opgeslagen zodra de sensor wakker wordt."
+          },
+          "value": 0,
+          "units": {
+            "en": "s"
+          },
+          "attr": {
+            "min": 0,
+            "max": 255
+          }
+        }
+      ]
     }
   ],
   "flow": {
@@ -1628,8 +1716,12 @@
       {
         "id": "panic_button_sos_held",
         "title": {
-          "en": "SOS button is held (2 seconds)",
-          "nl": "SOS knop is ingedrukt gehouden (2 seconden)"
+          "en": "SOS button is long pressed",
+          "nl": "SOS knop is lang ingedrukt"
+        },
+        "hint": {
+          "en": "The SOS button is held for about 2 seconds.",
+          "nl": "De SOS knop wordt ongeveer 2 seconden ingedrukt gehouden."
         },
         "args": [
           {
@@ -2060,6 +2152,42 @@
             "type": "device",
             "name": "device",
             "filter": "driver_id=tag_reader_500"
+          }
+        ]
+      },
+      {
+        "id": "window_door_sensor_doorbell_pressed",
+        "title": {
+          "en": "Doorbell is pressed",
+          "nl": "Deurbel is ingedrukt"
+        },
+        "hint": {
+          "en": "The button on the external contact (screw connector) is pressed.",
+          "nl": "De knop op het externe contact (schroefaansluiting) is ingedrukt."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=window_door_sensor"
+          }
+        ]
+      },
+      {
+        "id": "window_door_sensor_doorbell_released",
+        "title": {
+          "en": "Doorbell is released",
+          "nl": "Deurbel is losgelaten"
+        },
+        "hint": {
+          "en": "The button on the external contact (screw connector) is released.",
+          "nl": "De knop op het externe contact (schroefaansluiting) is losgelaten."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=window_door_sensor"
           }
         ]
       }
