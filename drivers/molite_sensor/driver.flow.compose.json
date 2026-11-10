@@ -1,0 +1,113 @@
+{
+  "triggers": [
+    {
+      "id": "molite_light_level_changed",
+      "title": {
+        "en": "The light level changed",
+        "nl": "Het lichtniveau is veranderd"
+      },
+      "hint": {
+        "en": "The sensor measures light in steps of 10%, every time it wakes up.",
+        "nl": "De sensor meet licht in stappen van 10%, elke keer dat hij wakker wordt."
+      },
+      "tokens": [
+        {
+          "name": "light_level",
+          "type": "number",
+          "title": {
+            "en": "Light level (%)",
+            "nl": "Lichtniveau (%)"
+          },
+          "example": 30
+        }
+      ]
+    },
+    {
+      "id": "molite_light_level_above",
+      "title": {
+        "en": "The light level rose above a value",
+        "nl": "Het lichtniveau is boven een waarde gestegen"
+      },
+      "titleFormatted": {
+        "en": "The light level rose above [[level]] %",
+        "nl": "Het lichtniveau is boven [[level]] % gestegen"
+      },
+      "args": [
+        {
+          "type": "number",
+          "name": "level",
+          "placeholder": { "en": "50", "nl": "50" },
+          "min": 0,
+          "max": 100,
+          "step": 10
+        }
+      ],
+      "tokens": [
+        {
+          "name": "light_level",
+          "type": "number",
+          "title": {
+            "en": "Light level (%)",
+            "nl": "Lichtniveau (%)"
+          },
+          "example": 60
+        }
+      ]
+    },
+    {
+      "id": "molite_light_level_below",
+      "title": {
+        "en": "The light level dropped below a value",
+        "nl": "Het lichtniveau is onder een waarde gezakt"
+      },
+      "titleFormatted": {
+        "en": "The light level dropped below [[level]] %",
+        "nl": "Het lichtniveau is onder [[level]] % gezakt"
+      },
+      "args": [
+        {
+          "type": "number",
+          "name": "level",
+          "placeholder": { "en": "30", "nl": "30" },
+          "min": 0,
+          "max": 100,
+          "step": 10
+        }
+      ],
+      "tokens": [
+        {
+          "name": "light_level",
+          "type": "number",
+          "title": {
+            "en": "Light level (%)",
+            "nl": "Lichtniveau (%)"
+          },
+          "example": 20
+        }
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "id": "molite_light_level_is_above",
+      "title": {
+        "en": "The light level is !{{above|not above}} a value",
+        "nl": "Het lichtniveau is !{{boven|niet boven}} een waarde"
+      },
+      "titleFormatted": {
+        "en": "The light level is !{{above|not above}} [[level]] %",
+        "nl": "Het lichtniveau is !{{boven|niet boven}} [[level]] %"
+      },
+      "args": [
+        {
+          "type": "number",
+          "name": "level",
+          "placeholder": { "en": "50", "nl": "50" },
+          "min": 0,
+          "max": 100,
+          "step": 10
+        }
+      ]
+    }
+  ]
+}
