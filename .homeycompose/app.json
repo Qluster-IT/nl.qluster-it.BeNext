@@ -24,6 +24,7 @@
     "small": "/assets/images/small.png"
   },
   "source": "https://github.com/Qluster-IT/nl.qluster-it.BeNext/",
+  "homepage": "https://github.com/Qluster-IT/nl.qluster-it.BeNext/wiki",
   "bugs": {
     "url": "https://github.com/Qluster-IT/nl.qluster-it.BeNext/issues"
   },
