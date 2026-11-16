@@ -9,12 +9,12 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Inversion-NL/eu.benext.git"
+    "url": "git+https://github.com/Qluster-IT/nl.qluster-it.BeNext.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Inversion-NL/eu.benext/issues"
+    "url": "https://github.com/Qluster-IT/nl.qluster-it.BeNext/issues"
   },
-  "homepage": "https://github.com/Inversion-NL/eu.benext#readme"
+  "homepage": "https://github.com/Qluster-IT/nl.qluster-it.BeNext/wiki"
 }
